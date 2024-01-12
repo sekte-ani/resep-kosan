@@ -17,23 +17,25 @@ class AuthController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'role' => 'required|in:user'
-        ]);
+    
+            $validatedData = $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',
+                // 'role' => 'required|in:user, iUser'
+            ]);
 
-        $data = [
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-            'role' => $validatedData['role']
-        ];
+            $data = [
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
+                // 'role' => $validatedData['role']
+            ];
 
-        User::create($data);
-        return redirect('/login');
+            User::create($data);
+            return redirect('/login');
     }
+
 
     protected $redirectTo = '/';
     public function index()

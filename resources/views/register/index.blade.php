@@ -17,7 +17,8 @@
             <div class="max-w-md w-full p-6 bg-white shadow-md rounded-md">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Daftar</h2>
 
-                <form>
+                <form method='POST' action="{{ route('register.post') }}" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-4">
                         <label for="name" class="block text-gray-600 text-sm font-medium mb-2">Nama</label>
                         <input type="text" id="name" name="name"
