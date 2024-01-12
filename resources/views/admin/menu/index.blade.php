@@ -24,7 +24,6 @@
 					<th class="col-md-1">No</th>
 					<th class="col-md-2">Nama Menu</th>
 					<th class="col-md-2">Kategori</th>
-					<th class="col-md-2">Deskripsi</th>
 					<th class="col-md-3">Aksi</th>
 				</tr>
 			</thead>
@@ -33,8 +32,7 @@
 				<tr>
 					<td>{{ $loop -> iteration }}</td>
 					<td>{{ $item -> title }}</td>
-					<td>{{ $item -> category_id }}</td>
-					<td>{{  $item -> desc }}</td>
+					<td>{{ $item -> category->name }}</td>
 					<td>
 						{{-- {{ /url('modul/'.$item->id.'/edit') }} --}}
 						<a href='/detail-cuti' class="btn btn-primary btn-sm">Detail</a>
@@ -72,18 +70,33 @@
 				@endforeach --}}
 			</tbody>
 		</table>
-			
-		{{-- Menampilkan total pemasukan --}}
-		<div class="d-flex align-items-end flex-column p-2 mb-2">
-			{{-- <p class="h4 p-3 rounded fw-bolder">Total Pemasukan : Rp. {{ $totalPemasukan }}</p> --}}
-		</div>
 		{{-- Paginator --}}
 		{{ $allMenu->withQueryString()->links() }}
+			
+		{{-- Menampilkan total pemasukan --}}
+		{{-- <div class="d-flex align-items-end flex-column p-2 mb-2"> --}}
+			{{-- <p class="h4 p-3 rounded fw-bolder">Total Pemasukan : Rp. {{ $totalPemasukan }}</p> --}}
+		{{-- </div> --}}
   </div>
 </div>
 
 </section>
 @endsection
+
+{{-- @push('styles')
+<style>
+    .desc-cell {
+        max-height: 3em; /* Set the maximum height (adjust as needed) */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+        white-space: nowrap; /* Prevent wrapping to the next line */
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+</style>
+@endpush --}}
 {{-- Import modal form tambah data --}}
 @push('modal')
 @include('admin.menu.modal.create')

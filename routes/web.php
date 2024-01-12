@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
@@ -51,7 +52,8 @@ Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-Route::get('/dashboard-menu', [MenuController::class, 'getAllMenu'])->name('listmenu');
+Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
+Route::get('/dashboard-menu', [DashboardController::class, 'store'])->name('listmenu');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');

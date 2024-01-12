@@ -103,12 +103,5 @@ class MenuController extends Controller
         ]);
     }
 
-    public function getAllMenu(Request $request)
-    {
-        $allMenu = Menu::orderBy('title', 'asc')->paginate(10);
-
-        return view('admin.menu.index', [
-            'allMenu' => $allMenu,
-        ]);
-    }
+    
 }
