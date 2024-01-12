@@ -32,4 +32,8 @@ class HomeController extends Controller
     {
         return view('login.index');
     }
+    public function register()
+    {
+        return view('register.index');
+    }
 }
