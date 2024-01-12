@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
@@ -44,13 +45,15 @@ Route::get('/cemilan', [MenuController::class, 'cemilan'])->name('cemilan.index'
 Route::get('/cemilan/{title}', [MenuController::class, 'show'])->name('cemilan.detail');
 Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
 
-Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
+Route::get('/{title}/rating', [MenuController::class, 'showMore'])->name('rating.index');
+Route::get('/rating/{id}', [MenuController::class, 'rateDetail'])->name('rating.detail');
 
 Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-Route::get('/dashboard-menu', [MenuController::class, 'getAllMenu'])->name('listmenu');
+Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
+Route::get('/dashboard-menu', [DashboardController::class, 'store'])->name('listmenu');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');
