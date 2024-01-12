@@ -7,9 +7,9 @@
             <div class="card card-stat">
                 <div class="card-body px-4 py-4-5">
                     
-                        <h3 class="ps-2">Aku siapa aku siapa</h3>
+                        <h3 class="ps-2">Total User</h3>
                         <div class="d-flex align-items-start flex-column p-2 mb-2">
-                            {{-- <p class="fs-1 p-3 rounded fw-bolder text-success">{{ $message }}</p> --}}
+                            <p class="fs-1 p-3 rounded fw-bolder text-success">{{ $totalUser }}</p>
                         </div>
                     
                 </div>
@@ -19,9 +19,9 @@
             <div class="card card-stat">
                 <div class="card-body px-4 py-4-5">
                     
-                        <h3 class="ps-2">Aku siapa aku siapa</h3>
+                        <h3 class="ps-2">Total Menu</h3>
                         <div class="d-flex align-items-start flex-column p-2 mb-2">
-                            {{-- <p class="fs-1 p-3 rounded fw-bolder text-danger">{{ $user }}</p> --}}
+                            <p class="fs-1 p-3 rounded fw-bolder text-success">{{ $totalMenu }}</p>
                         </div>
                     
                 </div>
@@ -36,7 +36,7 @@
 
 		<div class="my-3 p-3 rounded">
 			<div class="mb-3">
-				<h2>Data User</h2>
+				<h2>List User</h2>
 			</div>
 			
 			
@@ -47,23 +47,19 @@
 						<th class="col-md-2">No</th>
 						<th class="col-md-2">Nama</th>
 						<th class="col-md-2">Email</th>
-						<th class="col-md-2">Nope</th>
-						<th class="col-md-2">Alamat</th>
 					</tr>
 				</thead>
 				<tbody>
-					{{-- @foreach ($allUser as $item)
+					@foreach ($users as $item)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td>{{ $item->name }}</td>
 							<td>{{ $item->email }}</td>
-							<td>{{ $item->phone }}</td>
-							<td>{{ $item->address }}</td>
 						</tr>
-					@endforeach --}}
+					@endforeach
 				</tbody>
 			</table>
-			{{-- {{ $allUser->withQueryString()->links() }} --}}
+			{{ $users->withQueryString()->links() }}
 		</div>
 	</div>
 </section>

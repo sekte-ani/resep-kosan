@@ -26,5 +26,8 @@
     @endforeach
 </div>
 
+<div class="flex flex-col mt-5 p-10">
 
+    {{ $menus->links('pagination::tailwind') }}
+</div>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Makananan-Page')
+@section('title', 'Cemilan-Page')
 
 
 @section('content')
@@ -17,7 +17,7 @@
                     <h5 class="mb-2  block text-3xl font-bold tracking-tight text-white ">{{ $item->title }}</h5>
                 </a>
 
-                <a href="/minuman/{{ $item->slug }}"
+                <a href="/cemilan/{{ $item->slug }}"
                     class="block  items-center w-full px-3 py-2 text-sm font-medium text-center text-white bg-[#D9B500] rounded-lg hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300">
                     Lihat Resep
                 </a>
@@ -25,6 +25,9 @@
         </div>
     @endforeach
 </div>
+<div class="flex flex-col mt-5 p-10">
 
+    {{ $menus->links('pagination::tailwind') }}
+</div>
 
 @endsection

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,17 +46,19 @@ Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.
 
 Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard.index');
-})->name('dashboard');
+Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
+
+
+Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+Route::get('/dashboard-menu', [MenuController::class, 'getAllMenu'])->name('listmenu');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');
 });
 
-Route::get('/dashboard-menu', function () {
-    return view('admin.menu.index');
-})->name('dashboard-menu');
+// Route::get('/dashboard-menu', function () {
+//     return view('admin.menu.index');
+// })->name('dashboard-menu');
 
 // Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard.index');
 // Route::get('/makanan', [HomeController::class, 'makanan'])->name('makanan.index');
