@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Menu', 'page_heading' => 'Data Menu'])
+@extends('admin.layouts.main', ['title' => 'Menu', 'page_heading' => 'List Semua Menu'])
 
 @section('content')
 @include('admin.utilities.alert-flash-message')
@@ -14,7 +14,7 @@
 			<button type="button" class="btn btn-success me-2 py-2" data-bs-toggle="modal" data-bs-target="#TambahDataModal">
 				+ Tambah Data
 			</button>
-			<a href="/riwayat-cuti" class="btn btn-warning">Riwayat Cuti</a>
+			{{-- <a href="/riwayat-cuti" class="btn btn-warning">Riwayat Cuti</a> --}}
 		</div>
 		<!-- Table untuk memanggil data dari database -->
 		<table class="table table-hover">
@@ -22,18 +22,19 @@
 				<tr>
 					{{-- DATANYA SESUAIIN LAGI  NANTI SAMA YANG DIBIKIN --}}
 					<th class="col-md-1">No</th>
-					<th class="col-md-2">Tanggal Mulai</th>
-					<th class="col-md-2">Tanggal Selesai</th>
-					<th class="col-md-2">Alasan</th>
+					<th class="col-md-2">Nama Menu</th>
+					<th class="col-md-2">Kategori</th>
+					<th class="col-md-2">Deskripsi</th>
 					<th class="col-md-3">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($allMenu as $item)
 				<tr>
-					<td>1</td>
-					<td>25-12-2003</td>
-					<td>30-12-2003</td>
-					<td>Bapakku Hamil</td>
+					<td>{{ $loop -> iteration }}</td>
+					<td>{{ $item -> title }}</td>
+					<td>{{ $item -> category }}</td>
+					<td>{{  $item -> desc }}</td>
 					<td>
 						{{-- {{ /url('modul/'.$item->id.'/edit') }} --}}
 						<a href='/detail-cuti' class="btn btn-primary btn-sm">Detail</a>
@@ -42,15 +43,17 @@
 						<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">
 							@csrf
 							@method('PUT')
-							<button type="submit" name="submit" class="btn btn-success btn-sm">Terima</button>
+							<button type="submit" name="submit" class="btn btn-warning btn-sm">Edit</button>
 						</form>
 						<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">
 							@csrf
 							@method('PUT')
-							<button type="submit" name="submit" class="btn btn-danger btn-sm">Tolak</button>
+							<button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
 						</form>
 					</td>
 				</tr>
+				@endforeach
+
 				{{-- @foreach ($data as $item)
 					<tr>
 						<td>{{ $loop->iteration }}</td>
@@ -75,7 +78,7 @@
 			{{-- <p class="h4 p-3 rounded fw-bolder">Total Pemasukan : Rp. {{ $totalPemasukan }}</p> --}}
 		</div>
 		{{-- Paginator --}}
-		{{-- {{ $data->withQueryString()->links() }} --}}
+		{{ $allMenu->withQueryString()->links() }}
   </div>
 </div>
 

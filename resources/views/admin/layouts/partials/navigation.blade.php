@@ -25,7 +25,7 @@
 		<li class="sidebar-item {{ request()->routeIs('dashboard-menu*') ? 'active' : '' }}">
 			<a href="/dashboard-menu" class='sidebar-link'>
 				<i class="bi bi-file-earmark-font-fill"></i>
-				<span>Cuti</span>
+				<span>List Menu</span>
 			</a>
 		</li>
 		{{-- <li class="sidebar-item {{ request()->routeIs('pesan*') ? 'active' : '' }}">

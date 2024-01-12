@@ -77,4 +77,13 @@ class MenuController extends Controller
         Rate::create($validatedData);
         return redirect('/');
     }
+
+    public function getAllMenu(Request $request)
+    {
+        $allMenu = Menu::orderBy('name', 'asc')->paginate(10);
+
+        return view('admin.menu.index', [
+            'allMenu' => $allMenu,
+        ]);
+    }
 }

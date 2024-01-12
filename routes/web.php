@@ -46,14 +46,15 @@ Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+Route::get('/dashboard-menu', [MenuController::class, 'getAllMenu'])->name('listmenu');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');
 });
 
-Route::get('/dashboard-menu', function () {
-    return view('admin.menu.index');
-})->name('dashboard-menu');
+// Route::get('/dashboard-menu', function () {
+//     return view('admin.menu.index');
+// })->name('dashboard-menu');
 
 // Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard.index');
 // Route::get('/makanan', [HomeController::class, 'makanan'])->name('makanan.index');
