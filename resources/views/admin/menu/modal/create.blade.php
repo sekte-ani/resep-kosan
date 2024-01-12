@@ -12,13 +12,28 @@
 				        <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="mb-3">
-                            <label for="title" class="form-label">Judul</label>
-                            <input type="text" class="form-control" name='title' id="title" placeholder="Masukkan judul modul.." value="{{ Session::get('title') }}">
+                            <label for="title" class="form-label">Nama Makanan</label>
+                            <input type="text" class="form-control" name='title' id="title" placeholder="Masukkan nama makanan..">
                         </div>
                         <div class="mb-3">
-                            <label for="modul" class="form-label">File Modul</label>
-                            <input type="file" name="modul" id="modul" class="form-control">
+                          <label for="img" class="form-label">Gambar Makanan</label>
+                          <input type="file" name="img" id="img" class="form-control">
                         </div>
+                        <div class="mb-3">
+                            <label for="desc" class="form-label">Deskripsi</label>
+                            <input type="text" class="form-control" name='desc' id="desc" placeholder="Masukkan deskripsi..">
+                        </div>
+                        <div class="mb-3">
+                          <label for="category_id" class="form-label">Kategori</label>
+                          <select class="form-select" name='category_id' id="category_id">
+                              <option value="" disabled>Pilih Kategori</option>
+                              <option value="1">Makanan</option>
+                              <option value="2">Minuman</option>
+                              <option value="3">Cemilan</option>
+                              <!-- Add more options as needed -->
+                          </select>
+                      </div>
+                      
                         
                     </div>
                     

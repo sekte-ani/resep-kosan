@@ -35,7 +35,7 @@
 					<td>{{ $item -> category->name }}</td>
 					<td>
 						{{-- {{ /url('modul/'.$item->id.'/edit') }} --}}
-						<a href='/detail-cuti' class="btn btn-primary btn-sm">Detail</a>
+						<a href='/detail-menu' class="btn btn-primary btn-sm">Detail</a>
 						{{-- <a href='' class="btn btn-warning btn-sm">Edit</a> --}}
 							
 						<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">

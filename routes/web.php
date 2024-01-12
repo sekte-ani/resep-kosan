@@ -52,8 +52,9 @@ Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+
 Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
-Route::get('/dashboard-menu', [DashboardController::class, 'store'])->name('listmenu');
+Route::post('/dashboard-menu', [DashboardController::class, 'store'])->name('listmenu');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');

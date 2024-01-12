@@ -34,6 +34,6 @@ class DashboardController extends Controller
             'category_id' => $validatedData['category_id'],
         ]);
         Menu::create($menu);
-        return redirect()->to('/dashboard-menu')-with('success', 'Berhasil menambahkan data');
+        return redirect('/dashboard-menu');
     }
 }
