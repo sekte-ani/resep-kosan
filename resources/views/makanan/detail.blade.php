@@ -19,33 +19,9 @@
                 <div>
                     {!! $menus->desc !!}
                 </div>
-                {{-- <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Bahan-bahan:</h2>
-                <ul class="max-w-md space-y-1 text-black list-disc list-inside dark:text-gray-400">
-                    <li>
-                        At least 10 characters (and up to 100 characters)
-                    </li>
-                    <li>
-                        At least one lowercase character
-                    </li>
-                    <li>
-                        Inclusion of at least one special character, e.g., ! @ # ?
-                    </li>
-                </ul> --}}
+                
             </div>
-            <div>
-                {{-- <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Cara Membuat:</h2>
-                <ul class="max-w-md space-y-1 text-black list-disc list-inside dark:text-gray-400">
-                    <li>
-                        At least 10 characters (and up to 100 characters)
-                    </li>
-                    <li>
-                        At least one lowercase character
-                    </li>
-                    <li>
-                        Inclusion of at least one special character, e.g., ! @ # ?
-                    </li>
-                </ul> --}}
-            </div>
+            
             <hr class="h-px my-8 bg-gray-200 border-0 ">
             <div class=" ">
                 <div class="flex justify-between">
