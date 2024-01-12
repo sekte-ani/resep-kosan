@@ -16,9 +16,9 @@
         <nav class="bg-[#495E57] border-gray-200">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> --}}
-                    {{-- <img src="{{ asset('images/') }}" alt="Example Image"> --}}
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Perusahaan">
+
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Perusahaan" class="w-12 object-cover">
+
 
                     <div class="relative">
                         <input type="text" id="search-navbar"
