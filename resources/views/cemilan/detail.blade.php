@@ -13,7 +13,7 @@
         style="background-image: url('{{ asset('images/nasgor.jpg') }}');">
     </div>
     <!-- Kalimat di sebelah kanan -->
-    <div class="lg:w-2/3  p-10">
+    <div class="lg:w-2/3 p-10">
         <h1 class="text-4xl font-bold mb-4">{{ $menus->title }}</h1>
         <div class="mb-10">
             <div>
@@ -56,12 +56,12 @@
 
             <div class="md:flex md:space-x-4 sm:grid grid-cols-1  sm:gap-4 sm:mt-4">
                 @foreach ($rates as $items)
-                    <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3">
+                    <div class="bg-white p-4 rounded-lg shadow mb-3 w-96">
                         <h3 class="text-xl font-semibold">Rating: {{ $items->rating }}/5</h3>
                         <p class="text-gray-600">Reviewer: {{ $items->user->name }}</p>
                         <p class="text-gray-600">Date:
                             {{ \Carbon\Carbon::parse($items->created_at)->isoFormat('D MMMM Y') }}</p>
-                        <p class="mt-2">Comment: {{ $items->review }}</p>
+                        <p class="mt-2 text-wrap">Comment: {{ $items->review }}</p>
                     </div>
                 @endforeach
             </div>
