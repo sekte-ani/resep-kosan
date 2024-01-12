@@ -42,26 +42,15 @@
 						<input id="desc" type="hidden" value="{{ $menu->desc }}" name="desc">
               			<trix-editor input="desc"></trix-editor>
 					</div>
-					
-				  
-					
 				</div>
 				
 
 			</div>
 			<div class="modal-footer">
-			<a href="/dashboard-menu" class="btn btn-secondary">Kembali</a>
-
+			  <a href="/dashboard-menu" class="btn btn-secondary">Kembali</a>
 			  <button type="submit" class="btn btn-success" name="submit">Simpan</button>
 			</div>
 		</form>
-		{{-- Paginator --}}
-		{{-- {{ $allMenu->withQueryString()->links() }} --}}
-			
-		{{-- Menampilkan total pemasukan --}}
-		{{-- <div class="d-flex align-items-end flex-column p-2 mb-2"> --}}
-			{{-- <p class="h4 p-3 rounded fw-bolder">Total Pemasukan : Rp. {{ $totalPemasukan }}</p> --}}
-		{{-- </div> --}}
   </div>
 </div>
 </section>
@@ -88,25 +77,10 @@
   </script>
 @endsection
 
-{{-- @push('styles')
-<style>
-    .desc-cell {
-        max-height: 3em; /* Set the maximum height (adjust as needed) */
-        overflow: hidden;
-        text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
-        white-space: nowrap; /* Prevent wrapping to the next line */
-    }
 
-    .table-container {
-        overflow-x: auto;
-    }
-</style>
-@endpush --}}
 {{-- Import modal form tambah data --}}
 @push('modal')
 @include('admin.menu.modal.create')
-{{-- @include('modul.modal.edit') --}}
-{{-- @include('pemasukan.modal.edit') --}}
 @endpush
 
 {{-- @push('js')
