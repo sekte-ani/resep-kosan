@@ -81,8 +81,12 @@ class MenuController extends Controller
     public function showMore($title)
     {
         $menu = Menu::where('slug', $title)->first();
-        $rate = Rate::with(['user', 'menu'])->get();
-        return view('rating.index', [
+        $rate = Rate::with(['user', 'menu'])->paginate(4);
+        // return view('rating.index', [
+        //     'menus' => $menu,
+        //     'rates' => $rate
+        // ]);
+        return view('makanan.rating', [
             'menus' => $menu,
             'rates' => $rate
         ]);
@@ -91,6 +95,9 @@ class MenuController extends Controller
     public function rateDetail($id)
     {
         $rate = Rate::with(['user', 'menu'])->findOrFail($id);
+        return view('rating.detail', [
+            'rates' => $rate
+        ]);
         return view('rating.detail', [
             'rates' => $rate
         ]);

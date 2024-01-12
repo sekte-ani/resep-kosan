@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Makananan-Page')
+@section('title', 'Makanan-Page')
 
 
 @section('content')
