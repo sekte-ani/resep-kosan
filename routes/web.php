@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');;
 Route::post('/login',  [AuthController::class, 'authenticate']);
+Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
+Route::post('/register', [AuthController::class, 'store']);
 
 Route::get('/', [MenuController::class, 'dashboard'])->name('dashboard.index');
 Route::get('/makanan', [MenuController::class, 'makanan'])->name('makanan.index');
