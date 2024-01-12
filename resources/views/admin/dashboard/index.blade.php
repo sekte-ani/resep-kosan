@@ -21,7 +21,7 @@
                     
                         <h3 class="ps-2">Total Menu</h3>
                         <div class="d-flex align-items-start flex-column p-2 mb-2">
-                            {{-- <p class="fs-1 p-3 rounded fw-bolder text-danger">{{ $user }}</p> --}}
+                            <p class="fs-1 p-3 rounded fw-bolder text-success">{{ $totalMenu }}</p>
                         </div>
                     
                 </div>
@@ -50,16 +50,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{-- @foreach ($allUser as $item)
+					@foreach ($users as $item)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td>{{ $item->name }}</td>
 							<td>{{ $item->email }}</td>
 						</tr>
-					@endforeach --}}
+					@endforeach
 				</tbody>
 			</table>
-			{{-- {{ $allUser->withQueryString()->links() }} --}}
+			{{ $users->withQueryString()->links() }}
 		</div>
 	</div>
 </section>
