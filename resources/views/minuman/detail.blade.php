@@ -56,7 +56,7 @@
 
             <div class="md:flex md:space-x-4 sm:grid grid-cols-1  sm:gap-4 sm:mt-4">
                 @foreach ($rates as $items)
-                    <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3">
+                    <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3 w-96">
                         <h3 class="text-xl font-semibold">Rating: {{ $items->rating }}/5</h3>
                         <p class="text-gray-600">Reviewer: {{ $items->user->name }}</p>
                         <p class="text-gray-600">Date:
