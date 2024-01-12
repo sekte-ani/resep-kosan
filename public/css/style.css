@@ -1,3 +1,7 @@
 .select2 {
     width: 100% !important;
 }
+.active {
+    color: #d0ad06;
+    text-decoration: underline;
+}
