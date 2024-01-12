@@ -31,7 +31,7 @@ class MenuController extends Controller
 
     public function minuman()
     {
-        $minuman = Menu::with('category')->where('category_id', 'name', 'minuman')->paginate(6);
+        $minuman = Menu::with('category')->where('category_id', '=', '2')->paginate(6);
         $menu = Menu::latest();
 
         if (request('search')) {
@@ -45,7 +45,7 @@ class MenuController extends Controller
 
     public function cemilan()
     {
-        $cemilan = Menu::with('category')->where('category_id', 'name', 'cemilan')->paginate(6);
+        $cemilan = Menu::with('category')->where('category_id', '=', '3')->paginate(6);
         $menu = Menu::latest();
 
         if (request('search')) {
