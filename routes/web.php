@@ -42,6 +42,8 @@ Route::get('/cemilan', [MenuController::class, 'cemilan'])->name('cemilan.index'
 Route::get('/cemilan/{title}', [MenuController::class, 'show'])->name('cemilan.detail');
 Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
 
+Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard.index');
 })->name('dashboard');
