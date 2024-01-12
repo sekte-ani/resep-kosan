@@ -33,7 +33,7 @@
 				<tr>
 					<td>{{ $loop -> iteration }}</td>
 					<td>{{ $item -> title }}</td>
-					<td>{{ $item -> category }}</td>
+					<td>{{ $item -> category_id }}</td>
 					<td>{{  $item -> desc }}</td>
 					<td>
 						{{-- {{ /url('modul/'.$item->id.'/edit') }} --}}
