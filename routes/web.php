@@ -19,6 +19,7 @@ use App\Http\Controllers\MenuController;
 //     return view('layout');
 // });
 
+
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout',  [AuthController::class, 'logout']);
 });
@@ -40,3 +41,26 @@ Route::post('/minuman/{title}', [MenuController::class, 'rate'])->name('minuman.
 Route::get('/cemilan', [MenuController::class, 'cemilan'])->name('cemilan.index');
 Route::get('/cemilan/{title}', [MenuController::class, 'show'])->name('cemilan.index');
 Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.index');
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard.index');
+})->name('dashboard');
+
+Route::get('/dashboard-login', function () {
+    return view('admin.auth.login');
+});
+
+Route::get('/dashboard-menu', function () {
+    return view('admin.menu.index');
+})->name('dashboard-menu');
+
+Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard.index');
+Route::get('/makanan', [HomeController::class, 'makanan'])->name('makanan.index');
+Route::get('/detMakanan', [HomeController::class, 'detailMakanan'])->name('makanan.detail');
+Route::get('/minuman', [HomeController::class, 'minuman'])->name('minuman.index');
+Route::get('/detMinuman', [HomeController::class, 'detailMinuman'])->name('minuman.detail');
+Route::get('/cemilan', [HomeController::class, 'cemilan'])->name('cemilan.index');
+Route::get('/detCemilan', [HomeController::class, 'detailCemilan'])->name('cemilan.detail');
+Route::get('/login', [HomeController::class, 'login'])->name('login.index');
+Route::get('/register', [HomeController::class, 'register'])->name('register.index');
+

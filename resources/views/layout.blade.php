@@ -8,21 +8,21 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="bg-gray-50">
     {{-- --- Bagian Header --- --}}
     <header>
 
 
         <nav class="bg-[#495E57] border-gray-200">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div class="xl:max-screen-3xl md:max-w-screen-2xl  flex flex-wrap items-center justify-between mx-5 p-4">
                 <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> --}}
-                    {{-- <img src="{{ asset('images/') }}" alt="Example Image"> --}}
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Perusahaan">
 
-                    <div class="relative">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo Perusahaan" class="w-12 object-cover">
+
+
+                    <div class="relative ">
                         <input type="text" id="search-navbar"
-                            class="block w-full p-2 pl-10 text-sm text-white border rounded-lg bg-[#607E74] focus:ring-gray-400 focus:border-gray-400"
+                            class="block w-fullp-2 pl-10 text-sm text-white border rounded-lg bg-[#607E74] focus:ring-gray-400 focus:border-gray-400"
                             placeholder="Search...">
                         <svg class="absolute w-4 h-4 text-[#F4CE14]  top-3 left-3" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -48,20 +48,20 @@
                         class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
                         <li>
                             <a href="{{ route('dashboard.index') }}"
-                                class="block py-2 px-3 text-white bg-blue-700 rounded  hover:underline md:bg-transparent md:hover:text-[#D0AD06] md:p-0 "
+                            class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0"
                                 aria-current="page">Beranda</a>
                         </li>
                         <li>
                             <a href="{{ route('makanan.index') }}""
-                                class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 md:dark:hover:text-blue-500  ">Makanan</a>
+                                class="block py-2 px-3  text-white rounded hover:bg-gray-100 hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0  ">Makanan</a>
                         </li>
                         <li>
                             <a href="{{ route('minuman.index') }}""
-                                class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Makanan</a>
+                                class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Minuman</a>
                         </li>
                         <li>
                             <a href="{{ route('cemilan.index') }}""
-                                class="block py-2 px-3  text-white rounded  hover:underline hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
+                                class="block py-2 px-3  text-white rounded  hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
                         </li>
                     </ul>
                 </div>
@@ -85,6 +85,17 @@
     <footer></footer>
 
     {{-- --- Footer --- --}}
+    {{-- <script src="/js/script.js"></script> --}}
+    <script src="{{ asset('js/script.js') }}"></script>
+    {{-- <script>
+        document.getElementById('openModal').addEventListener('click', function() {
+            document.getElementById('modal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('modal').classList.add('hidden');
+        });
+    </script> --}}
 </body>
 
 </html>
