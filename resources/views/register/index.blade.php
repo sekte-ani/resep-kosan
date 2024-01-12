@@ -61,7 +61,7 @@
                 <p class="text-lg">Mari Daftar Terlebih Dahulu</p>
                 <div class=" text-white justify-center">
                     <p class="text-lg">Sudah pernah login?</p>
-                    <a href="{{ route('login.index') }}"> <button type="submit"
+                    <a href="{{ route('login') }}"> <button type="submit"
                             class="bg-[#495E57] w-full text-white px-4 py-2 rounded-md hover:bg-green-900 focus:outline-none focus:bg-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" class="h-5 w-5 inline-block mr-2">
