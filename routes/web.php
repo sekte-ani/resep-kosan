@@ -54,7 +54,7 @@ Route::get('/dashboard-menu', function () {
     return view('admin.menu.index');
 })->name('dashboard-menu');
 
-Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard.index');
+Route::get('/', [HomeController::class, 'index'])->name('dashboard.index');
 Route::get('/makanan', [HomeController::class, 'makanan'])->name('makanan.index');
 Route::get('/detMakanan', [HomeController::class, 'detailMakanan'])->name('makanan.detail');
 Route::get('/minuman', [HomeController::class, 'minuman'])->name('minuman.index');
