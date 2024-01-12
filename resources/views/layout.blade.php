@@ -8,7 +8,7 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="bg-gray-50">
     {{-- --- Bagian Header --- --}}
     <header>
 
@@ -76,7 +76,7 @@
     {{-- --- End Header --- --}}
 
     {{-- --- Bagian Content --- --}}
-    <div ">
+    <div>
         @yield('content')
     </div>
     {{-- --- End Content --- --}}

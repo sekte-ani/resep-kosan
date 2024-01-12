@@ -45,30 +45,38 @@
             </div>
             <div class="mt-24">
                 <div class="flex justify-between">
-
                     <h2 class="mb-2 text-lg font-semibold text-gray-900">Reviews</h2>
-                    <h2 class="mb-2 text-md font-semibold text-gray-900 ">See More</h2>
+                    <h2 class="mb-2 text-lg font-semibold text-gray-900">See More</h2>
                 </div>
-                <div>
+                <div class="flex space-x-4">
+                    <div class="max-w-md bg-white p-4 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold">Rating: 4.5</h3>
+                        <p class="text-gray-600">Reviewer: Santa</p>
+                        <p class="text-gray-600">Date: January 12, 2024</p>
+                        <p class="mt-2">Comment: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, molestias
+                            velit, quos error, a</p>
+                    </div>
 
+                    <div class="max-w-md bg-white p-4 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold">Rating: 4.5</h3>
+                        <p class="text-gray-600">Reviewer: Santa</p>
+                        <p class="text-gray-600">Date: January 12, 2024</p>
+                        <p class="mt-2">Comment: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, molestias
+                            velit, quos error, a</p>
+                    </div>
+
+                    <div class="max-w-md bg-white p-4 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold">Rating: 4.5</h3>
+                        <p class="text-gray-600">Reviewer: Santa</p>
+                        <p class="text-gray-600">Date: January 12, 2024</p>
+                        <p class="mt-2">Comment: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, molestias
+                            velit, quos error, a</p>
+                    </div>
                 </div>
-                <ul class="max-w-md space-y-1 text-black list-disc list-inside dark:text-gray-400">
-                    <li>
-                        At least 10 characters (and up to 100 characters)
-                    </li>
-                    <li>
-                        At least one lowercase character
-                    </li>
-                    <li>
-                        Inclusion of at least one special character, e.g., ! @ # ?
-                    </li>
-                </ul>
             </div>
-        </div>
-        <div>
-            <h2 class="text-black">Review</h2>
-        </div>
-    </div>
 
 
-@endsection
+        </div>
+
+
+    @endsection
