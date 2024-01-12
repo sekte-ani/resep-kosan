@@ -28,4 +28,8 @@ class HomeController extends Controller
     {
         return view('cemilan/index');
     }
+    public function login()
+    {
+        return view('login.index');
+    }
 }
