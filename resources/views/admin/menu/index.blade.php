@@ -14,7 +14,7 @@
 			{{-- <button type="button" class="btn btn-success me-2 py-2" data-bs-toggle="modal" data-bs-target="#TambahDataModal">
 				+ Tambah Data
 			</button> --}}
-			<a href='/dashboard-menu/create' class="btn btn-primary btn-sm">+ Tambah Data</a>
+			<a href='/dashboard-menu/create' class="btn btn-success">+ Tambah Data</a>
 			{{-- <a href="/riwayat-cuti" class="btn btn-warning">Riwayat Cuti</a> --}}
 		</div>
 		<!-- Table untuk memanggil data dari database -->

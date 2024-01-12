@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Menu', 'page_heading' => 'Tambah Menu Baru'])
+@extends('admin.layouts.main', ['title' => 'Tambah Menu', 'page_heading' => 'Tambah Menu Baru'])
 
 @section('content')
 @include('admin.utilities.alert-flash-message')
@@ -30,6 +30,16 @@
 						<input type="text" class="form-control" name='slug' id="slug" placeholder="Slug akan digenerate..">
 					</div>
 					<div class="mb-3">
+						<label for="category_id" class="form-label">Kategori</label>
+						<select class="form-select" name='category_id' id="category_id">
+							<option value="" disabled>Pilih Kategori</option>
+							<option value="1">Makanan</option>
+							<option value="2">Minuman</option>
+							<option value="3">Cemilan</option>
+							<!-- Add more options as needed -->
+						</select>
+					</div>
+					<div class="mb-3">
 					  <label for="img" class="form-label">Gambar Makanan</label>
 					  <input type="file" name="img" id="img" class="form-control">
 					</div>
@@ -39,16 +49,7 @@
 						<input id="desc" type="hidden" name="desc">
               			<trix-editor input="desc"></trix-editor>
 					</div>
-					<div class="mb-3">
-					  <label for="category_id" class="form-label">Kategori</label>
-					  <select class="form-select" name='category_id' id="category_id">
-						  <option value="" disabled>Pilih Kategori</option>
-						  <option value="1">Makanan</option>
-						  <option value="2">Minuman</option>
-						  <option value="3">Cemilan</option>
-						  <!-- Add more options as needed -->
-					  </select>
-				  </div>
+					
 				  
 					
 				</div>

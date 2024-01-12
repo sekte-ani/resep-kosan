@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Menu', 'page_heading' => 'Tambah Menu Baru'])
+@extends('admin.layouts.main', ['title' => 'Edit Menu', 'page_heading' => 'Edit Menu'])
 
 @section('content')
 @include('admin.utilities.alert-flash-message')
@@ -23,6 +23,16 @@
 						<input type="text" class="form-control" name='slug' id="slug" value="{{ $menu->slug }}" placeholder="Slug akan digenerate..">
 					</div>
 					<div class="mb-3">
+						<label for="category_id" class="form-label">Kategori</label>
+						<select class="form-select" name='category_id' id="category_id">
+							<option value="{{ $menu->category->name }}" disabled>Pilih Kategori</option>
+							<option value="1">Makanan</option>
+							<option value="2">Minuman</option>
+							<option value="3">Cemilan</option>
+							<!-- Add more options as needed -->
+						</select>
+					  </div>
+					<div class="mb-3">
 					  <label for="img" class="form-label">Gambar Makanan</label><br/>
     					<img src="{{asset("storage/".$menu->img)}}" alt="{{ $menu->title }}"class="img-fluid mb-3" style="max-height: 200px;" >
 					  <input type="file" name="img" value="{{ $menu->img }}" id="img" class="form-control">
@@ -32,16 +42,7 @@
 						<input id="desc" type="hidden" value="{{ $menu->desc }}" name="desc">
               			<trix-editor input="desc"></trix-editor>
 					</div>
-					<div class="mb-3">
-					  <label for="category_id" class="form-label">Kategori</label>
-					  <select class="form-select" name='category_id' id="category_id">
-						  <option value="{{ $menu->category->name }}" disabled>Pilih Kategori</option>
-						  <option value="1">Makanan</option>
-						  <option value="2">Minuman</option>
-						  <option value="3">Cemilan</option>
-						  <!-- Add more options as needed -->
-					  </select>
-				  </div>
+					
 				  
 					
 				</div>
