@@ -14,9 +14,12 @@
         </div>
         <!-- Kalimat di sebelah kanan -->
         <div class="lg:w-2/3  p-10">
-            <h1 class="text-4xl font-bold mb-4">NASI GORENG</h1>
+            <h1 class="text-4xl font-bold mb-4">{{ $menus->title }}</h1>
             <div class="mb-10">
-                <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Bahan-bahan:</h2>
+                <div>
+                    {!! $menus->desc !!}
+                </div>
+                {{-- <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Bahan-bahan:</h2>
                 <ul class="max-w-md space-y-1 text-black list-disc list-inside dark:text-gray-400">
                     <li>
                         At least 10 characters (and up to 100 characters)
@@ -27,10 +30,10 @@
                     <li>
                         Inclusion of at least one special character, e.g., ! @ # ?
                     </li>
-                </ul>
+                </ul> --}}
             </div>
             <div>
-                <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Cara Membuat:</h2>
+                {{-- <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Cara Membuat:</h2>
                 <ul class="max-w-md space-y-1 text-black list-disc list-inside dark:text-gray-400">
                     <li>
                         At least 10 characters (and up to 100 characters)
@@ -41,7 +44,7 @@
                     <li>
                         Inclusion of at least one special character, e.g., ! @ # ?
                     </li>
-                </ul>
+                </ul> --}}
             </div>
             <hr class="h-px my-8 bg-gray-200 border-0 ">
             <div class=" ">
@@ -50,32 +53,17 @@
 
                     <h2 class="mb-2 text-lg font-semibold text-gray-900">See More</h2>
                 </div>
+
                 <div class="md:flex md:space-x-4 sm:grid grid-cols-1  sm:gap-4 sm:mt-4">
-                    <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3">
-                        <h3 class="text-xl font-semibold">Rating: 4.5</h3>
-                        <p class="text-gray-600">Reviewer: Santa</p>
-                        <p class="text-gray-600">Date: January 12, 2024</p>
-                        <p class="mt-2">Comment: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, molestias
-                            velit, quos error, a</p>
-                    </div>
-
-                    <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3">
-                        <h3 class="text-xl font-semibold">Rating: 4.5</h3>
-                        <p class="text-gray-600">Reviewer: Santa</p>
-                        <p class="text-gray-600">Date: January 12, 2024</p>
-                        <p class="mt-2">Comment: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, molestias
-                            velit, quos error, a</p>
-                    </div>
-
-                    <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3">
-                        <h3 class="text-xl font-semibold">Rating: 4.5</h3>
-                        <p class="text-gray-600">Reviewer: Santa</p>
-                        <p class="text-gray-600">Date: January 12, 2024</p>
-                        <p class="mt-2">Comment: Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, molestias
-                            velit, quos error, a</p>
-
-                    </div>
-
+                    @foreach ($rates as $items)
+                        <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3">
+                            <h3 class="text-xl font-semibold">Rating: {{ $items->rating }}/5</h3>
+                            <p class="text-gray-600">Reviewer: {{ $items->user->name }}</p>
+                            <p class="text-gray-600">Date:
+                                {{ \Carbon\Carbon::parse($items->created_at)->isoFormat('D MMMM Y') }}</p>
+                            <p class="mt-2">Comment: {{ $items->review }}</p>
+                        </div>
+                    @endforeach
                 </div>
                 <button id="openModal"
                     class="w-full bg-[#D9B500] hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">Tambah
@@ -100,7 +88,8 @@
                     <!-- Form -->
                     <form action="
                     {{-- {{ route('review.store') }}"  --}}
-                    method="POST" class="mb-4">
+                    method="POST"
+                        class="mb-4">
                         @csrf
                         <!-- Add your form fields here, for example: -->
                         <div class="mb-4">

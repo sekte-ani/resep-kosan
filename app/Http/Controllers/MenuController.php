@@ -7,6 +7,7 @@ use App\Models\Rate;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+
 class MenuController extends Controller
 {
     public function dashboard()
@@ -16,10 +17,10 @@ class MenuController extends Controller
 
     public function makanan()
     {
-        $makanan = Menu::with('category')->where('category_id', 'name', 'makanan')->paginate(6);
+        $makanan = Menu::with('category')->where('category_id', '=', '1')->paginate(6);
         $menu = Menu::latest();
 
-        if(request('search')){
+        if (request('search')) {
             $menu->where('title', 'like', '%' . request('search') . '%');
         }
         return view('makanan.index', [
@@ -27,13 +28,13 @@ class MenuController extends Controller
             'menus2' => $menu->get(),
         ]);
     }
-    
+
     public function minuman()
     {
         $minuman = Menu::with('category')->where('category_id', 'name', 'minuman')->paginate(6);
         $menu = Menu::latest();
 
-        if(request('search')){
+        if (request('search')) {
             $menu->where('title', 'like', '%' . request('search') . '%');
         }
         return view('minuman.index', [
@@ -41,13 +42,13 @@ class MenuController extends Controller
             'menus2' => $menu->get(),
         ]);
     }
-    
+
     public function cemilan()
     {
         $cemilan = Menu::with('category')->where('category_id', 'name', 'cemilan')->paginate(6);
         $menu = Menu::latest();
 
-        if(request('search')){
+        if (request('search')) {
             $menu->where('title', 'like', '%' . request('search') . '%');
         }
         return view('cemilan.index', [
@@ -59,8 +60,8 @@ class MenuController extends Controller
     public function show($title)
     {
         $menu = Menu::where('slug', $title)->first();
-        $rate = Rate::with(['user', 'menu'])->get();
-        return view('menu.detail', [
+        $rate = Rate::with(['user', 'menu'])->take(3)->get();
+        return view('makanan.detail', [
             'menus' => $menu,
             'rates' => $rate
         ]);
