@@ -57,7 +57,7 @@
                         </li>
                         <li>
                             <a href="{{ route('minuman.index') }}""
-                                class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Makanan</a>
+                                class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Minuman</a>
                         </li>
                         <li>
                             <a href="{{ route('cemilan.index') }}""
@@ -76,7 +76,7 @@
     {{-- --- End Header --- --}}
 
     {{-- --- Bagian Content --- --}}
-    <div>
+    <div ">
         @yield('content')
     </div>
     {{-- --- End Content --- --}}
