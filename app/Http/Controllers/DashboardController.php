@@ -33,7 +33,24 @@ class DashboardController extends Controller
             'img' => $validatedData['img'],
             'category_id' => $validatedData['category_id'],
         ]);
+        
         Menu::create($menu);
         return redirect('/dashboard-menu');
+    }
+
+    public function update(Request $request, $id){
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'desc' => 'required',
+            'img' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $menu = Menu::findOrFail($id);
+
+        $menu->update($validatedData);
+        return redirect('/dashboard-menu');
+
     }
 }
