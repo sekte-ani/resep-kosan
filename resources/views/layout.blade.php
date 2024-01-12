@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>@yield('title')</title>
 </head>
 
@@ -48,28 +49,25 @@
                         class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
                         <li>
                             <a href="{{ route('dashboard.index') }}"
-                                class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0"
+                                class="{{ request()->routeIs('') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0"
                                 aria-current="page">Beranda</a>
                         </li>
                         <li>
                             <a href="{{ route('makanan.index') }}""
-                                class="block py-2 px-3  text-white rounded hover:bg-gray-100 hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0  ">Makanan</a>
+                                class="{{ request()->routeIs('makanan*') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100 hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0  ">Makanan</a>
                         </li>
                         <li>
                             <a href="{{ route('minuman.index') }}""
-                                class="block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Minuman</a>
+                                class="{{ request()->routeIs('minuman*') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Minuman</a>
                         </li>
                         <li>
                             <a href="{{ route('cemilan.index') }}""
-                                class="block py-2 px-3  text-white rounded  hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
+                                class="{{ request()->routeIs('cemilan*') ? 'active' : '' }} block py-2 px-3  text-white rounded  hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-
-
 
 
     </header>
