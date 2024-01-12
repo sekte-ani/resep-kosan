@@ -77,4 +77,22 @@ class MenuController extends Controller
         Rate::create($validatedData);
         return redirect('/');
     }
+
+    public function showMore($title)
+    {
+        $menu = Menu::where('slug', $title)->first();
+        $rate = Rate::with(['user', 'menu'])->get();
+        return view('rating.index', [
+            'menus' => $menu,
+            'rates' => $rate
+        ]);
+    }
+
+    public function rateDetail($id)
+    {
+        $rate = Rate::with(['user', 'menu'])->findOrFail($id);
+        return view('rating.detail', [
+            'rates' => $rate
+        ]);
+    }
 }
