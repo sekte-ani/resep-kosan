@@ -18,5 +18,6 @@ use App\Http\Controllers\HomeController;
 // });
 Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard.index');
 Route::get('/makanan', [HomeController::class, 'makanan'])->name('makanan.index');
+Route::get('/detMakanan', [HomeController::class, 'detailMakanan'])->name('makanan.detail');
 Route::get('/minuman', [HomeController::class, 'minuman'])->name('minuman.index');
 Route::get('/cemilan', [HomeController::class, 'cemilan'])->name('cemilan.index');

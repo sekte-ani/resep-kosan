@@ -14,6 +14,11 @@ class HomeController extends Controller
     {
         return view('makanan/index');
     }
+    public function detailMakanan()
+    {
+        return view('makanan/detail');
+    }
+
 
     public function minuman()
     {
