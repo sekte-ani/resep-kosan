@@ -35,7 +35,9 @@
 					</div>
 					<div class="mb-3">
 						<label for="desc" class="form-label">Deskripsi</label>
-						<input type="text" class="form-control" name='desc' id="desc" placeholder="Masukkan deskripsi..">
+						{{-- <input type="text" class="form-control" name='desc' id="desc" placeholder="Masukkan deskripsi.."> --}}
+						<input id="desc" type="hidden" name="desc">
+              			<trix-editor input="desc"></trix-editor>
 					</div>
 					<div class="mb-3">
 					  <label for="category_id" class="form-label">Kategori</label>
@@ -54,21 +56,17 @@
 
 			</div>
 			<div class="modal-footer">
-			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  <a href="/dashboard-menu" class="btn btn-secondary">Kembali</a>
 			  <button type="submit" class="btn btn-success" name="submit">Simpan</button>
 			</div>
 		</form>
-		{{-- Paginator --}}
-		{{-- {{ $allMenu->withQueryString()->links() }} --}}
-			
-		{{-- Menampilkan total pemasukan --}}
-		{{-- <div class="d-flex align-items-end flex-column p-2 mb-2"> --}}
-			{{-- <p class="h4 p-3 rounded fw-bolder">Total Pemasukan : Rp. {{ $totalPemasukan }}</p> --}}
-		{{-- </div> --}}
   </div>
 </div>
 </section>
 <script>
+	document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault();
+      })
     const tipes = document.querySelector('#title');
     const slugu = document.querySelector('#slug');
 
@@ -88,20 +86,7 @@
   </script>
 @endsection
 
-{{-- @push('styles')
-<style>
-    .desc-cell {
-        max-height: 3em; /* Set the maximum height (adjust as needed) */
-        overflow: hidden;
-        text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
-        white-space: nowrap; /* Prevent wrapping to the next line */
-    }
 
-    .table-container {
-        overflow-x: auto;
-    }
-</style>
-@endpush --}}
 {{-- Import modal form tambah data --}}
 @push('modal')
 @include('admin.menu.modal.create')

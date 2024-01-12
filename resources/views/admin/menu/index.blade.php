@@ -36,42 +36,25 @@
 					<td>{{ $item -> category->name }}</td>
 					<td>
 						{{-- {{ /url('modul/'.$item->id.'/edit') }} --}}
-						<a href='/detail-menu' class="btn btn-primary btn-sm">Detail</a>
+						<a href='{{ url('dashboard-menu/detail/'.$item->slug) }}' class="btn btn-primary btn-sm">Detail</a>
 						{{-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#EditDataModal">
 							Edit
 						</button> --}}
 						{{-- <a href='' class="btn btn-warning btn-sm">Edit</a> --}}
-						<a href='{{ url('dashboard-menu/'.$item->id) }}' class="btn btn-warning btn-sm">Edit</a>
+						<a href='{{ url('dashboard-menu/edit/'.$item->slug) }}' class="btn btn-warning btn-sm">Edit</a>
 						{{-- <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">
 							@csrf
 							@method('PUT')
 							<button type="submit" name="submit" class="btn btn-warning btn-sm">Edit</button>
 						</form> --}}
-						<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">
+						<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="/dashboard-menu/delete/{{ $item->slug }}" method="post">
 							@csrf
-							@method('PUT')
+							@method('delete')
 							<button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
 						</form>
 					</td>
 				</tr>
 				@endforeach
-
-				{{-- @foreach ($data as $item)
-					<tr>
-						<td>{{ $loop->iteration }}</td>
-						<td>{{ $item->title }}</td>
-						<td><a href="http://127.0.0.1:8000/storage/{{ $item->modul }}"><i class="bi bi-file-earmark-font-fill"></i></a></td>
-						<td>
-							<a href='{{ url('modul/'.$item->id.'/edit') }}' class="btn btn-warning btn-sm">Edit</a>
-							
-							<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="{{ url("modul/".$item->id) }}" method="post">
-								@csrf
-								@method('DELETE')
-								<button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
-							</form>
-						</td>
-					</tr>
-				@endforeach --}}
 			</tbody>
 		</table>
 		{{-- Paginator --}}
@@ -87,20 +70,7 @@
 </section>
 @endsection
 
-{{-- @push('styles')
-<style>
-    .desc-cell {
-        max-height: 3em; /* Set the maximum height (adjust as needed) */
-        overflow: hidden;
-        text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
-        white-space: nowrap; /* Prevent wrapping to the next line */
-    }
 
-    .table-container {
-        overflow-x: auto;
-    }
-</style>
-@endpush --}}
 {{-- Import modal form tambah data --}}
 @push('modal')
 @include('admin.menu.modal.create')

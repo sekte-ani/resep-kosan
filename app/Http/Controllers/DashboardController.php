@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Rate;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -20,7 +22,27 @@ class DashboardController extends Controller
 
     public function create()
     {
-        return view('admin/menu/modal/index');
+        return view('admin.menu.modal.index');
+    }
+    // public function detail()
+    // {
+    //     return view('admin.menu.modal.detail');
+    // }
+
+    public function show(Request $request, Menu $menu){
+        // $menu = Menu::where('id', '=', $request);
+        
+        $rating = Rate::where('menu_id', $menu->id)->paginate(5);
+        return view('admin.menu.modal.detail', [
+            'menu' => $menu,
+            'rating' => $rating,
+        ]);
+    }
+    public function showDetail(Menu $menu){
+        
+        return view('admin.menu.modal.edit', [
+            'menu' => $menu,
+        ]);
     }
 
     public function store(Request $request)
@@ -41,36 +63,41 @@ class DashboardController extends Controller
         return redirect('/dashboard-menu');
     }
 
+    public function destroy(Menu $menu){
+        if($menu->img) {
+            Storage::delete($menu->img);
+        }
+        Menu::destroy($menu->id);
+        return  redirect('/dashboard-menu')->with('success', 'Data berhasil terhapus!');
+    }
+
     public function checkSlug(Request $request){
         $slug = SlugService::createSlug(Menu::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
 
-    public function update(Request $request, $id){
+
+    public function update(Request $request, Menu $menu){
         $validatedData = $request->validate([
             'title' => 'required',
             'slug' => 'required',
             'desc' => 'required',
-            'img' => 'sometimes|file',
+            'img' => 'image|file|max:5120',
             'category_id' => 'required',
         ]);
 
-        $menu = Menu::findOrFail($id);
-
-        $menu->title = $validatedData['title'];
-        $menu->desc = $validatedData['desc'];
-        $menu->img = $validatedData['img'];
-        $menu->category_id = $validatedData['category_id'];
-        if ($request->hasFile('menu')) {
-            $uploadedFile = $request->file('menu');
-            $newFileName = time() . '_' . $uploadedFile->getClientOriginalName();
-            $uploadedFile->storeAs('path_to_store', $newFileName); // Adjust the path
-
-            // Update the menu item with the new file path
-            $menu->menu = 'path_to_store/' . $newFileName; // Adjust the path
+        if($request->slug != $menu->slug){
+            $rules['slug'] = 'required|unique:posts';
         }
 
-        $menu->save();
+        if($request->file('img')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['img'] = $request->file('img')->store('post-images');
+        }
+
+        Menu::where('slug', $menu->slug)->update($validatedData);
         return redirect('/dashboard-menu');
 
     }

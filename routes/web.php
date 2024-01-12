@@ -55,8 +55,11 @@ Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
 Route::get('/dashboard-menu/create', [DashboardController::class, 'create'])->name('listmenu.create');
+Route::get('/dashboard-menu/detail/{menu:slug}', [DashboardController::class, 'show'])->name('listmenu.show');
+Route::put('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'update'])->name('listmenu.update');
+Route::get('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'showDetail'])->name('listmenu.update');
+Route::delete('/dashboard-menu/delete/{menu:slug}', [DashboardController::class, 'destroy'])->name('listmenu.destroy');
 Route::post('/dashboard-menu/create', [DashboardController::class, 'store'])->name('listmenu');
-Route::put('/dashboard-menu/{id}', [DashboardController::class, 'update'])->name('listmenu.update');
 
 Route::get('/dashboard-menu/create/checkSlug', [DashboardController::class, 'checkSlug'])->name('checkSlug');
 
