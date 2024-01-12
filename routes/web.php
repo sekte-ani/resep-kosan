@@ -54,7 +54,11 @@ Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating
 Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
-Route::post('/dashboard-menu', [DashboardController::class, 'store'])->name('listmenu');
+Route::get('/dashboard-menu/create', [DashboardController::class, 'create'])->name('listmenu.create');
+Route::post('/dashboard-menu/create', [DashboardController::class, 'store'])->name('listmenu');
+Route::put('/dashboard-menu/{id}', [DashboardController::class, 'update'])->name('listmenu.update');
+
+Route::get('/dashboard-menu/create/checkSlug', [DashboardController::class, 'checkSlug'])->name('checkSlug');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');

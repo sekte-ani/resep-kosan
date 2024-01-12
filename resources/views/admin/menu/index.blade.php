@@ -11,9 +11,10 @@
 		<!-- TOMBOL TAMBAH DATA -->
 		<div class="pb-3 d-flex justify-content-end">
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-success me-2 py-2" data-bs-toggle="modal" data-bs-target="#TambahDataModal">
+			{{-- <button type="button" class="btn btn-success me-2 py-2" data-bs-toggle="modal" data-bs-target="#TambahDataModal">
 				+ Tambah Data
-			</button>
+			</button> --}}
+			<a href='/dashboard-menu/create' class="btn btn-primary btn-sm">+ Tambah Data</a>
 			{{-- <a href="/riwayat-cuti" class="btn btn-warning">Riwayat Cuti</a> --}}
 		</div>
 		<!-- Table untuk memanggil data dari database -->
@@ -36,13 +37,16 @@
 					<td>
 						{{-- {{ /url('modul/'.$item->id.'/edit') }} --}}
 						<a href='/detail-menu' class="btn btn-primary btn-sm">Detail</a>
+						{{-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#EditDataModal">
+							Edit
+						</button> --}}
 						{{-- <a href='' class="btn btn-warning btn-sm">Edit</a> --}}
-							
-						<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">
+						<a href='{{ url('dashboard-menu/'.$item->id) }}' class="btn btn-warning btn-sm">Edit</a>
+						{{-- <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">
 							@csrf
 							@method('PUT')
 							<button type="submit" name="submit" class="btn btn-warning btn-sm">Edit</button>
-						</form>
+						</form> --}}
 						<form onsubmit="return confirm('Apakah anda yakin ingin menghapus data?')" class="d-inline" action="" method="post">
 							@csrf
 							@method('PUT')
