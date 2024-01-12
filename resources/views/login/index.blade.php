@@ -37,7 +37,13 @@
         <div class="flex items-center justify-center flex-1">
             <div class="max-w-md w-full p-6 bg-white shadow-md rounded-md">
                 <h1 class="text-3xl font-bold text-gray-950 mb-10 text-center">Sign in </h1>
-                <form>
+                @if(session('loginError'))
+                <p>
+                    {{session('loginError')}}
+                </p>
+                @endif
+                <form action="/login" method="POST">
+                    @csrf
                     <div class="mb-4">
                         <label for="email" class="block text-gray-600 text-sm font-medium mb-2">Email</label>
                         <input type="email" id="email" name="email"
