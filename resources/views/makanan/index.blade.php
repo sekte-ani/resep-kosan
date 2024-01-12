@@ -5,8 +5,8 @@
 
 @section('content')
 
-    <div class="md:mx-10 md:mt-10 md:grid grid-cols-3  ">
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative overflow-hidden">
+    <div class="md:mx-10 md:mt-10 md:grid grid-cols-3 gap-4">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden mb-4">
             <a href="#" class="relative">
                 <img src="{{ asset('images/nasgor.jpg') }}" alt="Logo Perusahaan" class="w-full h-auto">
                 <div class="absolute inset-0 bg-black opacity-20"></div>
@@ -22,7 +22,7 @@
                 </a>
             </div>
         </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative overflow-hidden">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden mb-4">
             <a href="#" class="relative">
                 <img src="{{ asset('images/nasgor.jpg') }}" alt="Logo Perusahaan" class="w-full h-auto">
                 <div class="absolute inset-0 bg-black opacity-20"></div>
@@ -38,8 +38,7 @@
                 </a>
             </div>
         </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative overflow-hidden">
-            <a href="#" class="relative">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden mb-4">
                 <img src="{{ asset('images/nasgor.jpg') }}" alt="Logo Perusahaan" class="w-full h-auto">
                 <div class="absolute inset-0 bg-black opacity-20"></div>
             </a>
@@ -55,7 +54,7 @@
             </div>
         </div>
 
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative overflow-hidden">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden mb-4">
             <a href="#" class="relative">
                 <img src="{{ asset('images/nasgor.jpg') }}" alt="Logo Perusahaan" class="w-full h-auto">
                 <div class="absolute inset-0 bg-black opacity-20"></div>
@@ -71,8 +70,7 @@
                 </a>
             </div>
         </div>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow relative overflow-hidden">
-            <a href="#" class="relative">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden mb-4">
                 <img src="{{ asset('images/nasgor.jpg') }}" alt="Logo Perusahaan" class="w-full h-auto">
                 <div class="absolute inset-0 bg-black opacity-20"></div>
             </a>

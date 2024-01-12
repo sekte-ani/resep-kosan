@@ -16,7 +16,7 @@ class="flex p-4 relative justify-center border-b-4 border-[#A2A2A2] border-dashe
       class="flex w-[750px] h-[500px]"
     />
   </div>
-  <div class="block">
+  <div class="md:block hidden " >
     <img
       src="{{asset ('images/food3.jpg')}}"
       alt="food3"

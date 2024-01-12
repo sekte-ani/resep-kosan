@@ -24,9 +24,17 @@ class HomeController extends Controller
     {
         return view('minuman/index');
     }
+    public function detailMinuman()
+    {
+        return view('minuman/detail');
+    }
     public function cemilan()
     {
         return view('cemilan/index');
+    }
+    public function detailCemilan()
+    {
+        return view('cemilan/detail');
     }
     public function login()
     {

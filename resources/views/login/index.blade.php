@@ -7,7 +7,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="flex h-screen">
+    <div class="flex flex-col sm:flex-row h-screen">
 
         <div class="relative bg-cover md:flex items-center justify-center flex-1 text-white"
             style="background-image: url('{{ asset('images/drinklogin.jpg') }}">
@@ -19,15 +19,15 @@
                 <p class="text-lg">Silahkan Login Untuk Memberikan Rating Pada Resep</p>
                 <div class=" text-white justify-center">
                     <p class="text-lg">Belum punya akun ?</p>
-                    <button type="submit"
-                        class="bg-[#495E57] w-full text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                    <a href="{{ route('register.index') }}">  <button type="submit" 
+                        class="bg-[#495E57] w-full text-white px-4 py-2 rounded-md hover:bg-green-900 focus:outline-none focus:bg-blue-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             class="h-5 w-5 inline-block mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
                         </svg>
                         Register
-                    </button>
+                    </button></a>
                 </div>
 
             </div>
@@ -54,7 +54,7 @@
 
                     <div class="flex items-center mb-4">
                         <button type="submit"
-                            class="bg-[#495E57] w-full text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                            class="bg-[#495E57] w-full text-white px-4 py-2 rounded-md hover:bg-green-900 focus:outline-none focus:bg-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" class="h-5 w-5 inline-block mr-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
