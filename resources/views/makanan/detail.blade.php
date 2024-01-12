@@ -19,20 +19,21 @@
                 <div>
                     {!! $menus->desc !!}
                 </div>
-                
+
             </div>
-            
+
             <hr class="h-px my-8 bg-gray-200 border-0 ">
             <div class=" ">
                 <div class="flex justify-between">
                     <h2 class="mb-2 text-lg font-semibold text-gray-900">Reviews</h2>
-
-                    <h2 class="mb-2 text-lg font-semibold text-gray-900">See More</h2>
+                    <a href="/{{ $menus->slug }}/rating">
+                        <h2 class="mb-2 text-lg font-semibold text-gray-900">See More</h2>
+                    </a>
                 </div>
 
                 <div class="md:flex md:space-x-4 sm:grid grid-cols-1  sm:gap-4 sm:mt-4">
                     @foreach ($rates as $items)
-                        <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3">
+                        <div class="max-w-md bg-white p-4 rounded-lg shadow mb-3 w-96">
                             <h3 class="text-xl font-semibold">Rating: {{ $items->rating }}/5</h3>
                             <p class="text-gray-600">Reviewer: {{ $items->user->name }}</p>
                             <p class="text-gray-600">Date:
@@ -49,6 +50,7 @@
 
         </div>
 
+        {{-- ========== MODAL =============== --}}
         <div id="modal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
             <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
 
