@@ -7,9 +7,9 @@
 
 <div class="md:mx-10 md:mt-10 md:grid grid-cols-3 gap-4">
     @foreach ($menus as $item)
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden mb-4">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden mb-4 h-[250px]">
             <a href="#" class="relative">
-                <img src="{{ asset('images/nasgor.jpg') }}" alt="Logo Perusahaan" class="w-full h-auto">
+                <img src="{{ asset('images/drinkbg.jpg') }}" alt="Logo Perusahaan" class="w-full h-auto">
                 <div class="absolute inset-0 bg-black opacity-20"></div>
             </a>
             <div class="p-5 absolute bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-yellow-200">
