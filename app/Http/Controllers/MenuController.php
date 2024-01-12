@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Menu;
+use App\Models\Rate;
+use App\Models\Category;
+use Illuminate\Http\Request;
+
+class MenuController extends Controller
+{
+    public function dashboard()
+    {
+        return view('dashboard.index');
+    }
+
+    public function makanan()
+    {
+        $makanan = Menu::with('category')->where('category_id', 'name', 'makanan')->paginate(6);
+        $menu = Menu::latest();
+
+        if(request('search')){
+            $menu->where('title', 'like', '%' . request('search') . '%');
+        }
+        return view('makanan.index', [
+            'menus' => $makanan,
+            'menus2' => $menu->get(),
+        ]);
+    }
+    
+    public function minuman()
+    {
+        $minuman = Menu::with('category')->where('category_id', 'name', 'minuman')->paginate(6);
+        $menu = Menu::latest();
+
+        if(request('search')){
+            $menu->where('title', 'like', '%' . request('search') . '%');
+        }
+        return view('minuman.index', [
+            'menus' => $minuman,
+            'menus2' => $menu->get(),
+        ]);
+    }
+    
+    public function cemilan()
+    {
+        $cemilan = Menu::with('category')->where('category_id', 'name', 'cemilan')->paginate(6);
+        $menu = Menu::latest();
+
+        if(request('search')){
+            $menu->where('title', 'like', '%' . request('search') . '%');
+        }
+        return view('cemilan.index', [
+            'menus' => $cemilan,
+            'menus2' => $menu->get(),
+        ]);
+    }
+
+    public function show($title)
+    {
+        $menu = Menu::where('slug', $title)->first();
+        $rate = Rate::with(['user', 'menu'])->get();
+        return view('menu.detail', [
+            'menus' => $menu,
+            'rates' => $rate
+        ]);
+    }
+
+    public function rate(Request $request)
+    {
+        $validatedData = $request->validate([
+            'rating' => 'required',
+            'review' => 'required|max:255',
+        ]);
+
+        Rate::create($validatedData);
+        return redirect('/');
+    }
+}

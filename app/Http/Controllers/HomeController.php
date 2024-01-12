@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function dashboard()
+    public function index()
     {
-        return view('dashboard.index');
+        return view('dashboard.index', [
+            'menus' => Menu::all(),
+            'categories' => Category::all()
+        ]);
     }
     public function makanan()
     {
