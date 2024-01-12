@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\Rate;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -44,5 +45,7 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name' => 'Cemilan'
         ]);
+
+        Rate::factory(100)->create();
     }
 }
