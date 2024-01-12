@@ -15,7 +15,7 @@
 
         <div class="flex items-center justify-center flex-1">
             <div class="max-w-md w-full p-6 bg-white shadow-md rounded-md">
-                <h2 class="text-3xl font-bold mb-6 text-gray-800">Daftar</h2>
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Daftar</h2>
 
                 <form>
                     <div class="mb-4">
@@ -58,7 +58,7 @@
 
             <div class="relative max-w-md p-10 z-10">
                 <h2 class="text-4xl font-bold mb-4 text-white">Selamat Datang!</h2>
-                <p class="text-lg">Mari Daftar telrebih Dahulu</p>
+                <p class="text-lg">Mari Daftar Terlebih Dahulu</p>
                 <div class=" text-white justify-center">
                     <p class="text-lg">Sudah pernah login?</p>
                     <button type="submit"
