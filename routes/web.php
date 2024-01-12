@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,9 +44,8 @@ Route::get('/cemilan', [MenuController::class, 'cemilan'])->name('cemilan.index'
 Route::get('/cemilan/{title}', [MenuController::class, 'show'])->name('cemilan.detail');
 Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard.index');
-})->name('dashboard');
+
+Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');

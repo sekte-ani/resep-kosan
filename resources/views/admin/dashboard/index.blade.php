@@ -50,13 +50,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($allUser as $item)
+					{{-- @foreach ($allUser as $item)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td>{{ $item->name }}</td>
 							<td>{{ $item->email }}</td>
 						</tr>
-					@endforeach
+					@endforeach --}}
 				</tbody>
 			</table>
 			{{-- {{ $allUser->withQueryString()->links() }} --}}
