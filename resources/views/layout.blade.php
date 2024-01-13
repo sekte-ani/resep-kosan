@@ -20,18 +20,20 @@
 
                     <img src="{{ asset('images/logo.png') }}" alt="Logo Perusahaan" class="w-12 object-cover">
 
+                    <form action="/search" method="GET">
 
-                    <div class="relative ">
-                        <input type="text" id="search-navbar"
-                            class="block w-fullp-2 pl-10 text-sm text-white border rounded-lg bg-[#607E74] focus:ring-gray-400 focus:border-gray-400 w-[500px]"
-                            placeholder="Search...">
-                        <svg class="absolute w-4 h-4 text-[#F4CE14]  top-3 left-3" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                    </div>
-                </a>
+                        <div class="relative ">
+                            <input type="text" id="search-navbar"
+                                class="block w-fullp-2 pl-10 text-sm text-white border rounded-lg bg-[#607E74] focus:ring-gray-400 focus:border-gray-400 lg:w-[500px] "
+                                placeholder="Search..." name="search">
+                            <svg class="absolute w-4 h-4 text-[#F4CE14]  top-3 left-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                    </form>
+            </div>
+            </a>
 
             <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
