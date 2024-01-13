@@ -46,7 +46,7 @@
     </div>
     <div class="col-lg-7 d-none d-lg-block">
         <div class="d-flex justify-content-center align-items-center" id="auth-right">
-            <img class="w-50" src="{{ asset('images/logo.png') }}" alt="logo">
+            <img src="{{ asset('images/logo.png') }}" alt="logo">
         </div>
     </div>
 </div>

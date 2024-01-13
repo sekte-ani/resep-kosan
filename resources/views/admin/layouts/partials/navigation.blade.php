@@ -22,7 +22,7 @@
 
 		{{-- <li class="sidebar-title"><i class="bi bi-menu-button-wide"></i></li> --}}
 		
-		<li class="sidebar-item {{ request()->routeIs('dashboard-menu*') ? 'active' : '' }}">
+		<li class="sidebar-item {{ Request::is('dashboard-menu*') ? 'active' : '' }}">
 			<a href="/dashboard-menu" class='sidebar-link'>
 				<i class="bi bi-file-earmark-font-fill"></i>
 				<span>List Menu</span>
@@ -43,7 +43,7 @@
 		</li> --}}
 		{{-- Logout --}}
 		<li class="sidebar-item">
-			<form method="POST" action="/logout" id="logout">
+			<form method="POST" action="/logout-admin" id="logout">
 				@csrf
 
 				<a href="" class='sidebar-link'>
