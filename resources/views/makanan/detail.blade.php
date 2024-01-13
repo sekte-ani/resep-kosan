@@ -75,7 +75,7 @@
                         {{-- <form action="{{ route('makanan.rate', ['title' => $title]) }}"method="POST" class="mb-4"> --}}
                         <form action="/makanan/{title}"method="POST" class="mb-4">
                             @csrf
-
+                            <input type="text" name="user_id" value="{{ Auth::user()->id }}">
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="reviewer">

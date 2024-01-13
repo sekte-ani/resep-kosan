@@ -6,7 +6,7 @@ use App\Models\Menu;
 use App\Models\Rate;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
@@ -70,14 +70,18 @@ class MenuController extends Controller
     public function rate(Request $request)
     {
         $validatedData = $request->validate([
+
             'rating' => 'required',
             'review' => 'required|max:255',
+            'user_id' => 'required',
+            'menu_id' => 'required',
+
         ]);
 
-        
-
-        Rate::create($validatedData);
-        return redirect('/');
+        // Rate::create($validatedData);
+        // // return redirect('/');
+        $rate = Rate::create($validatedData);
+        return response()->json(['success' => true, 'rate' => $rate]);
     }
 
     public function showMore($title)
@@ -104,6 +108,4 @@ class MenuController extends Controller
             'rates' => $rate
         ]);
     }
-
-    
 }
