@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Auth::routes();
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'user.login'], function () {
     Route::post('/logout',  [AuthController::class, 'logout']);
 });
 
