@@ -7,7 +7,12 @@ export default {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens:{
+        'handphone': '400px',
+      }
+    },
+   
   },
   plugins: [
     require('flowbite/plugin')
