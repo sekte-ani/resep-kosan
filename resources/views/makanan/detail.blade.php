@@ -73,27 +73,26 @@
 
                         <!-- Form -->
                         {{-- <form action="{{ route('makanan.rate', ['title' => $title]) }}"method="POST" class="mb-4"> --}}
-                        <form action="makanan.rate" method="POST" class="mb-4">
+                        <form method="POST" class="mb-4">
                             @csrf
-                            <input type="text" name="id" value="{{ Auth::user()->id }}">
-
                             <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="reviewer">
-                                    Reviewer
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="user_id">
+                                    
+                                    Reviewer :
+                                    {{ Auth::user()->name }}
                                 </label>
 
                                 <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="reviewer" name="reviewer" type="text" disabled value="{{ Auth::user()->name }}">
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hidden"
+                                    id="user_id" name="user_id" type="number" disabled value="{{ Auth::user()->id }}">
                             </div>
-                            {{-- <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
-                                    Rating: (1-5)
-                                </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="rating" name="rating" type="number" min="1" max="5"  required>
-                            </div> --}}
+                          
+                            <div class="mb-3 hidden">
+                                <label for="menu_id" class="form-label">Menu ID</label>
+                                <input type="text" class="form-control" name='menu_id' id="menu_id"
+                                    value="{{ $menus->id }}" required>
+
+                            </div>
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
                                     Rating:
@@ -111,7 +110,7 @@
 
 
                             <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="review">
                                     Review:
                                 </label>
                                 <textarea
@@ -121,10 +120,12 @@
 
                             <div class="flex items-center justify-end">
                                 <button class="bg-[#D9B500] hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded"
-                                    type="submit">
+                                    type="submit" name="submit">
                                     Tambah Review
                                 </button>
                             </div>
+
+
                         </form>
                     </div>
                 </div>
