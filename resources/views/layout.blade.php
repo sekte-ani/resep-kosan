@@ -46,24 +46,41 @@
 
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul
-                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
+                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                         <li>
                             <a href="{{ route('dashboard.index') }}"
-                                class="{{ request()->routeIs('') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0"
-                                aria-current="page">Beranda</a>
+                            class="{{ request()->routeIs('') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0"
+                            aria-current="page">Beranda</a>
                         </li>
                         <li>
-                            <a href="{{ route('makanan.index') }}""
-                                class="{{ request()->routeIs('makanan*') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100 hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0  ">Makanan</a>
+                            <a href="{{ route('makanan.index') }}"
+                            class="{{ request()->routeIs('makanan*') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100 hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0  ">Makanan</a>
                         </li>
                         <li>
-                            <a href="{{ route('minuman.index') }}""
-                                class="{{ request()->routeIs('minuman*') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Minuman</a>
+                            <a href="{{ route('minuman.index') }}"
+                            class="{{ request()->routeIs('minuman*') ? 'active' : '' }} block py-2 px-3  text-white rounded hover:bg-gray-100  hover:text-[#D0AD06] hover:underline md:hover:bg-transparent md:hover:text-[#D0AD06]  md:p-0 ">Minuman</a>
                         </li>
                         <li>
-                            <a href="{{ route('cemilan.index') }}""
-                                class="{{ request()->routeIs('cemilan*') ? 'active' : '' }} block py-2 px-3  text-white rounded  hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
+                            <a href="{{ route('cemilan.index') }}"
+                            class="{{ request()->routeIs('cemilan*') ? 'active' : '' }} block py-2 px-3  text-white rounded  hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
                         </li>
+                        @auth
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Logout</button>
+                                </form>
+                            </li>
+                        @else
+                            @guest
+
+                                <li>
+                                    <a href="{{ route('login') }}"
+                                        class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Login</a>
+                                </li>
+                            @endguest
+                        @endauth
                     </ul>
                 </div>
             </div>

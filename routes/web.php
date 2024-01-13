@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +22,7 @@ use App\Http\Controllers\UserController;
 //     return view('layout');
 // });
 
-
+Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout',  [AuthController::class, 'logout']);
 });
