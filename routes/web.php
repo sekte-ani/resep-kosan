@@ -23,13 +23,14 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Auth::routes();
-Route::group(['middleware' => 'user.login'], function () {
-    Route::post('/logout',  [AuthController::class, 'logout']);
-    
-    Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
-});
+Route::post('/logout',  [AuthController::class, 'logout']);
+Route::post('/logout-admin',  [UserController::class, 'logout']);
 
-Route::group(['middleware' => 'auth'], function(){
+Route::get('/error-akses', function(){
+    return view('error');
+})->name('error-akses');
+
+Route::middleware(['auth','user_login:admin'])->group(function(){
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
     Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
@@ -42,7 +43,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/dashboard-menu/create/checkSlug', [DashboardController::class, 'checkSlug'])->name('checkSlug');
 
-    Route::post('/logout-admin',  [UserController::class, 'logout']);
+    
+
+});
+Route::middleware(['auth','user_login:user'])->group(function(){
+    Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
+
 });
 
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');;

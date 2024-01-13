@@ -66,7 +66,19 @@
                         <a href="{{ route('cemilan.index') }}"
                             class="{{ request()->routeIs('cemilan*') ? 'active' : '' }} block py-2 px-3  text-white rounded  hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
                     </li>
-                    @auth
+
+
+                    @if (Auth::user() === null)
+                         <li>
+                            <a href="{{ route('login') }}"
+                                class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Login</a>
+                        </li>
+                    @elseif (Auth::user()->role === 'admin')
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Login</a>
+                        </li>
+                    @else
                         <li>
                             <form action="/logout" method="POST">
                                 @csrf
@@ -74,15 +86,7 @@
                                     class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Logout</button>
                             </form>
                         </li>
-                    @else
-                        @guest
-
-                            <li>
-                                <a href="{{ route('login') }}"
-                                    class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Login</a>
-                            </li>
-                        @endguest
-                    @endauth
+                    @endif
                 </ul>
             </div>
             </div>

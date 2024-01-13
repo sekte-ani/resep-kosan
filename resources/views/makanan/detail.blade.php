@@ -6,12 +6,22 @@
 @section('content')
 
     <div class="lg:flex ">
-        <div class="hidden  lg:block lg:w-1/3 md:block h-screen bg-cover bg-center"
+         @if ($menus->img === 'kosong.png')
+         <div class="hidden  lg:block lg:w-1/3 md:block h-screen bg-cover bg-center"
             style="background-image: url('{{ asset('images/nasgor.jpg') }}');">
         </div>
         <div class="lg:hidden w-full h-48 bg-cover bg-center mt-2"
             style="background-image: url('{{ asset('images/nasgor.jpg') }}');">
         </div>
+            
+        @else
+        <div class="hidden  lg:block lg:w-1/3 md:block h-screen bg-cover bg-center"
+            style="background-image: url('{{ asset('storage/'.$menus->img) }}');">
+        </div>
+           <div class="lg:hidden w-full h-48 bg-cover bg-center mt-2"
+                style="background-image: url('{{ asset('storage/'.$menus->img) }}');">
+            </div>
+        @endif
         <!-- Kalimat di sebelah kanan -->
         <div class="lg:w-2/3  p-10">
             <h1 class="text-4xl font-bold mb-4">{{ $menus->title }}</h1>
@@ -42,17 +52,23 @@
                         </div>
                     @endforeach
                 </div>
-                @auth
-                    <button id="openModal"
-                        class="w-full bg-[#D9B500] hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">Tambah
-                        Review</button>
-                @else
+
+
+                @if (Auth::user() === null)
                     <a href="{{ route('login') }}" class="underline"><button id=""
                             class="w-full bg-gray-300 hover:bg-yellow-400 hover:text-white text-gray-700 font-bold py-2 px-4 rounded">Ingin
                             Tambah Review? <label for="" class="underline text-blue-500 hover:text-white">Login</label>
                             terlebih dahulu</button></a>
-
-                @endauth
+                @elseif (Auth::user()->role === 'admin')
+                    <a href="#" class="underline"><button id=""
+                        class="w-full bg-gray-300 hover:bg-yellow-400 hover:text-white text-gray-700 font-bold py-2 px-4 rounded">Ingin
+                        Tambah Review? <label for="" class="underline text-blue-500 hover:text-white">Login</label>
+                        terlebih dahulu</button></a>
+                @else
+                    <button id="openModal"
+                        class="w-full bg-[#D9B500] hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">Tambah
+                        Review</button>
+                @endif
             </div>
 
 
