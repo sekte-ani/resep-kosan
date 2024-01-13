@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserLogin
@@ -13,8 +14,17 @@ class UserLogin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request): ?string
+    public function handle(Request $request, Closure $next, $roles): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+       if (!Auth::check()) {
+            return redirect('login');
+        }
+        $user = Auth::user();
+
+        if($user->level == $roles)
+            return $next($request);
+
+
+        return redirect('login')->with('error',"kamu gak punya akses");
     }
 }

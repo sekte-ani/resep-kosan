@@ -62,14 +62,18 @@ class AuthController extends Controller
             if ($user->role === 'admin') {
 
                 return redirect()->intended('/dashboard');
+            }elseif($user->role === 'user'){
+                return redirect()->intended('/');
             }
 
-            return redirect()->intended('/');
         }
 
         return back()->with('loginError', 'Login Failed!');
-    }
+        
 
+
+    }
+    
     public function logout(Request $request)
     {
         Auth::logout();

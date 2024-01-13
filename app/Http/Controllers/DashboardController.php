@@ -51,7 +51,7 @@ class DashboardController extends Controller
             'title' => 'required',
             'slug' => 'required',
             'desc' => 'required',
-            'img' => 'image|file|max:5120',
+            'img' => 'image|file|max:5120|mimes:jpeg,png,jpg,gif,webp',
             'category_id' => 'required',
         ]);
         
@@ -82,7 +82,7 @@ class DashboardController extends Controller
             'title' => 'required',
             'slug' => 'required',
             'desc' => 'required',
-            'img' => 'image|file|max:5120',
+            'img' => 'image|file|max:5120|mimes:jpeg,png,jpg,gif,webp',
             'category_id' => 'required',
         ]);
 

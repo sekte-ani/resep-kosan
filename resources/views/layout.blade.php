@@ -16,7 +16,7 @@
 
         <nav class="bg-[#495E57] border-gray-200">
             <div class="xl:max-screen-3xl md:max-w-screen-2xl  flex flex-wrap items-center justify-between mx-5 p-4">
-                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 
                     <img src="{{ asset('images/logo.png') }}" alt="Logo Perusahaan" class="w-12 object-cover">
 
@@ -66,7 +66,10 @@
                         <a href="{{ route('cemilan.index') }}"
                             class="{{ request()->routeIs('cemilan*') ? 'active' : '' }} block py-2 px-3  text-white rounded  hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0 ">Cemilan</a>
                     </li>
-                    @auth
+
+                    @dd(Auth::user())
+
+                    {{-- @auth()
                         <li>
                             <form action="/logout" method="POST">
                                 @csrf
@@ -75,14 +78,12 @@
                             </form>
                         </li>
                     @else
-                        @guest
-
-                            <li>
-                                <a href="{{ route('login') }}"
-                                    class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Login</a>
-                            </li>
-                        @endguest
-                    @endauth
+                    <li>
+                        <a href="/login"
+                            class="block py-2 px-3 text-white rounded hover:underline hover:text-[#D0AD06] hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#D0AD06] md:p-0">Login</a>
+                    </li>
+                     
+                    @endif --}}
                 </ul>
             </div>
             </div>

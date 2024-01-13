@@ -23,13 +23,13 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Auth::routes();
-Route::group(['middleware' => 'user.login'], function () {
+Route::group(['middleware' => 'UserLogin:user'], function () {
     Route::post('/logout',  [AuthController::class, 'logout']);
     
     Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
 });
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'UserLogin:admin'], function(){
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
     Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/logout-admin',  [UserController::class, 'logout']);
 });
 
-Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');;
+Route::get('/login', [AuthController::class, 'index'])->name('login');;
 Route::post('/login',  [AuthController::class, 'authenticate']);
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest')->name('register');
 Route::post('/register', [AuthController::class, 'store']);

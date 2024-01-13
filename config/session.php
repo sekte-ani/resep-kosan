@@ -115,6 +115,17 @@ return [
 
     'lottery' => [2, 100],
 
+    'drivers' => [
+        'user' => [
+            'driver' => 'file',
+            'lifetime' => 120,
+            'expire_on_close' => false,
+            'encrypt' => false,
+            'files' => storage_path('framework/sessions'),
+            'connection' => null,
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Session Cookie Name

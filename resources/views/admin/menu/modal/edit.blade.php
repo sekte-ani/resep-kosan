@@ -35,7 +35,7 @@
 					<div class="mb-3">
 					  <label for="img" class="form-label">Gambar Makanan</label><br/>
     					<img src="{{asset("storage/".$menu->img)}}" alt="{{ $menu->title }}"class="img-fluid mb-3" style="max-height: 200px;" >
-					  <input type="file" name="img" value="{{ $menu->img }}" id="img" class="form-control">
+					  <input type="file" name="img" value="{{ $menu->img }}" id="img" accept="image/png, image/gif, image/jpeg, image/webp"  class="form-control">
 					</div>
 					<div class="mb-3">
 						<label for="desc" class="form-label">Deskripsi</label>

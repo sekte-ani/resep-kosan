@@ -6,12 +6,24 @@
 @section('content')
 
     <div class="lg:flex ">
-        <div class="hidden  lg:block lg:w-1/3 md:block h-screen bg-cover bg-center"
+         @if ($menus->img === 'kosong.png')
+         <div class="hidden  lg:block lg:w-1/3 md:block h-screen bg-cover bg-center"
             style="background-image: url('{{ asset('images/nasgor.jpg') }}');">
         </div>
         <div class="lg:hidden w-full h-48 bg-cover bg-center mt-2"
             style="background-image: url('{{ asset('images/nasgor.jpg') }}');">
         </div>
+            
+        @else
+        <div class="hidden  lg:block lg:w-1/3 md:block h-screen bg-cover bg-center"
+            style="background-image: url('{{ asset('storage/'.$menus->img) }}');">
+        </div>
+           <div class="lg:hidden w-full h-48 bg-cover bg-center mt-2"
+                style="background-image: url('{{ asset('storage/'.$menus->img) }}');">
+            </div>
+        @endif
+        
+ 
         <!-- Kalimat di sebelah kanan -->
         <div class="lg:w-2/3  p-10">
             <h1 class="text-4xl font-bold mb-4">{{ $menus->title }}</h1>
