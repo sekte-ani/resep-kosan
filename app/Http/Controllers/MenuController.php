@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class MenuController extends Controller
 {
+
     public function dashboard()
     {
         return view('dashboard.index');
@@ -76,6 +77,7 @@ class MenuController extends Controller
         $validatedData = $request->validate([
             'rating' => 'required',
             'review' => 'required|max:255',
+            'user_id' => 'required|user:id',
             'menu_id' => 'required|exists:menus,id'
         ]);
 
@@ -109,5 +111,18 @@ class MenuController extends Controller
             'rates' => $rate
         ]);
 
+    }
+
+    public function search()
+    {
+        $menu = Menu::latest();
+
+        if (request('search')) {
+            $menu->where('title', 'like', '%' . request('search') . '%');
+        }
+
+        return view('dashboard.search', [
+            'menus' => $menu->get(),
+        ]);
     }
 }
