@@ -5,9 +5,9 @@
 
 @section('content')
 
-    <div class="md:mx-10 md:mt-10 md:grid grid-cols-3 gap-4">
+    <div class="md:mx-10 md:mt-10 md:grid grid-cols-4 gap-4">
         @foreach ($menus as $item)
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden h-[350px]">
+            <div class="md:max-w-md bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden md:h-[350px] my-4">
                 <a href="#" class="relative">
                     <img src="{{ asset('images/drink5.jpg') }}" alt="Logo Perusahaan" class="w-full h-full">
                     <div class="absolute inset-0 bg-black opacity-20"></div>

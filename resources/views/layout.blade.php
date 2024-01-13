@@ -23,7 +23,7 @@
 
                     <div class="relative ">
                         <input type="text" id="search-navbar"
-                            class="block w-fullp-2 pl-10 text-sm text-white border rounded-lg bg-[#607E74] focus:ring-gray-400 focus:border-gray-400"
+                            class="block w-fullp-2 pl-10 text-sm text-white border rounded-lg bg-[#607E74] focus:ring-gray-400 focus:border-gray-400 w-[500px]"
                             placeholder="Search...">
                         <svg class="absolute w-4 h-4 text-[#F4CE14]  top-3 left-3" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
