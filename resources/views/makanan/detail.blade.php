@@ -73,9 +73,9 @@
 
                         <!-- Form -->
                         {{-- <form action="{{ route('makanan.rate', ['title' => $title]) }}"method="POST" class="mb-4"> --}}
-                        <form action="/makanan/{title}"method="POST" class="mb-4">
+                        <form action="makanan.rate" method="POST" class="mb-4">
                             @csrf
-                            <input type="text" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="text" name="id" value="{{ Auth::user()->id }}">
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="reviewer">
@@ -86,15 +86,28 @@
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     id="reviewer" name="reviewer" type="text" disabled value="{{ Auth::user()->name }}">
                             </div>
+                            {{-- <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
+                                    Rating: (1-5)
+                                </label>
+                                <input
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="rating" name="rating" type="number" min="1" max="5"  required>
+                            </div> --}}
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
                                     Rating:
                                 </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="rating" name="rating" type="number" min="1" max="5" required>
+                                <select
+                                    class="block appearance-none w-full border border-gray-300 rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="rating" name="rating" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                             </div>
-
 
 
                             <div class="mb-4">

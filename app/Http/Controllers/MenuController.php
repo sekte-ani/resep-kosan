@@ -78,10 +78,8 @@ class MenuController extends Controller
 
         ]);
 
-        // Rate::create($validatedData);
-        // // return redirect('/');
-        $rate = Rate::create($validatedData);
-        return response()->json(['success' => true, 'rate' => $rate]);
+        Rate::create($validatedData);
+        return redirect('/');
     }
 
     public function showMore($title)
