@@ -47,10 +47,11 @@
                         class="w-full bg-[#D9B500] hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">Tambah
                         Review</button>
                 @else
-                    
-                        <a href="{{ route('login') }}" class="underline"><button id=""
-                            class="w-full bg-gray-300 hover:bg-yellow-400 hover:text-white text-gray-700 font-bold py-2 px-4 rounded">Ingin Tambah Review? <label for="" class="underline text-blue-500 hover:text-white">Login</label> terlebih dahulu</button></a> 
-                    
+                    <a href="{{ route('login') }}" class="underline"><button id=""
+                            class="w-full bg-gray-300 hover:bg-yellow-400 hover:text-white text-gray-700 font-bold py-2 px-4 rounded">Ingin
+                            Tambah Review? <label for="" class="underline text-blue-500 hover:text-white">Login</label>
+                            terlebih dahulu</button></a>
+
                 @endauth
             </div>
 
@@ -71,12 +72,20 @@
                         </div>
 
                         <!-- Form -->
-                        <form action="
-                    {{-- {{ route('review.store') }}"  --}}
-                    method="POST"
-                            class="mb-4">
+                        {{-- <form action="{{ route('makanan.rate', ['title' => $title]) }}"method="POST" class="mb-4"> --}}
+                        <form action="/makanan/{title}"method="POST" class="mb-4">
                             @csrf
-                            <!-- Add your form fields here, for example: -->
+
+
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="reviewer">
+
+                                </label>
+
+                                <input
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="reviewer" name="reviewer" type="text" disabled value=" {{ auth()->user()->name }}">
+                            </div>
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
                                     Rating:
@@ -86,14 +95,7 @@
                                     id="rating" name="rating" type="number" min="1" max="5" required>
                             </div>
 
-                            <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="reviewer">
-                                    Reviewer:
-                                </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="reviewer" name="reviewer" type="text" required>
-                            </div>
+
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">

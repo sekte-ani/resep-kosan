@@ -46,7 +46,7 @@ class AuthController extends Controller
     {
         $data = $request->user();
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required|email',
             'password' => 'required'
         ]);
 
@@ -58,7 +58,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $user = Auth::user();
-             
+
             if ($user->role === 'admin') {
 
                 return redirect()->intended('/dashboard');
