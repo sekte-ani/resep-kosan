@@ -6,10 +6,12 @@ use App\Models\Menu;
 use App\Models\Rate;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class MenuController extends Controller
 {
+
     public function dashboard()
     {
         return view('dashboard.index');
@@ -73,17 +75,26 @@ class MenuController extends Controller
             'rating' => 'required',
             'review' => 'required|max:255',
             'user_id' => 'required|user:id',
+            'menu_id' => 'required|exists:menus,id'
         ]);
 
-        Rate::create($validatedData);
-        return redirect('/');
-    }
+        $user_id = Auth::id();
 
+        $validatedData['user_id'] = $user_id;
+
+        Rate::create($validatedData);
+
+        return redirect('/makanan');
+    }
     public function showMore($title)
     {
         $menu = Menu::where('slug', $title)->first();
-        $rate = Rate::with(['user', 'menu'])->get();
-        return view('rating.index', [
+        $rate = Rate::with(['user', 'menu'])->paginate(4);
+        // return view('rating.index', [
+        //     'menus' => $menu,
+        //     'rates' => $rate
+        // ]);
+        return view('makanan.rating', [
             'menus' => $menu,
             'rates' => $rate
         ]);
@@ -94,6 +105,22 @@ class MenuController extends Controller
         $rate = Rate::with(['user', 'menu'])->findOrFail($id);
         return view('rating.detail', [
             'rates' => $rate
+        ]);
+        return view('rating.detail', [
+            'rates' => $rate
+        ]);
+    }
+
+    public function search()
+    {
+        $menu = Menu::latest();
+
+        if (request('search')) {
+            $menu->where('title', 'like', '%' . request('search') . '%');
+        }
+
+        return view('dashboard.search', [
+            'menus' => $menu->get(),
         ]);
     }
 }

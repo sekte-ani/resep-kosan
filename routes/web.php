@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +22,7 @@ use App\Http\Controllers\MenuController;
 //     return view('layout');
 // });
 
-
+Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout',  [AuthController::class, 'logout']);
 });
@@ -45,17 +48,29 @@ Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.
 Route::get('/{title}/rating', [MenuController::class, 'showMore'])->name('rating.index');
 Route::get('/rating/{id}', [MenuController::class, 'rateDetail'])->name('rating.detail');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard.index');
-})->name('dashboard');
+Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
+
+Route::get('/search', [MenuController::class, 'search']);
+
+Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
+Route::get('/dashboard-menu/create', [DashboardController::class, 'create'])->name('listmenu.create');
+Route::get('/dashboard-menu/detail/{menu:slug}', [DashboardController::class, 'show'])->name('listmenu.show');
+Route::put('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'update'])->name('listmenu.update');
+Route::get('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'showDetail'])->name('listmenu.update');
+Route::delete('/dashboard-menu/delete/{menu:slug}', [DashboardController::class, 'destroy'])->name('listmenu.destroy');
+Route::post('/dashboard-menu/create', [DashboardController::class, 'store'])->name('listmenu');
+
+Route::get('/dashboard-menu/create/checkSlug', [DashboardController::class, 'checkSlug'])->name('checkSlug');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');
 });
 
-Route::get('/dashboard-menu', function () {
-    return view('admin.menu.index');
-})->name('dashboard-menu');
+// Route::get('/dashboard-menu', function () {
+//     return view('admin.menu.index');
+// })->name('dashboard-menu');
 
 // Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard.index');
 // Route::get('/makanan', [HomeController::class, 'makanan'])->name('makanan.index');

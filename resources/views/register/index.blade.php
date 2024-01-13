@@ -17,7 +17,8 @@
             <div class="max-w-md w-full p-6 bg-white shadow-md rounded-md">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">Daftar</h2>
 
-                <form>
+                <form action="/register" method="POST">
+                    @csrf
                     <div class="mb-4">
                         <label for="name" class="block text-gray-600 text-sm font-medium mb-2">Nama</label>
                         <input type="text" id="name" name="name"
@@ -36,6 +37,14 @@
                             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
                     </div>
 
+                    <div class="mb-4 hidden">
+                        <label for="role" class="block text-gray-600 text-sm font-medium mb-2">Role</label>
+                        <select id="role" name="role"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+                            <option value="user">User</option>
+                            <!-- Add other role options as needed -->
+                        </select>
+                    </div>
                     <div class="flex items-center mb-4">
                         <button type="submit"
                             class="bg-[#495E57] w-full text-white px-4 py-2 rounded-md hover:bg-green-900 focus:outline-none focus:bg-blue-600">

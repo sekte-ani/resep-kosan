@@ -1,57 +1,86 @@
-@extends('layouts.main', ['title' => 'Modul', 'page_heading' => 'Edit Data Modul'])
+@extends('admin.layouts.main', ['title' => 'Edit Menu', 'page_heading' => 'Edit Menu'])
 
 @section('content')
-@include('utilities.alert-flash-message')
+@include('admin.utilities.alert-flash-message')
 <section class="row">
 	<div class="col card px-3 py-3">
 
 	<div class="my-3 p-3 rounded">
 
+		
 		<!-- Table untuk memanggil data dari database -->
-		<form action="/modul/{{ $document->id }}" method='POST' enctype="multipart/form-data">
-            @method('PUT')
-            @csrf
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Judul</label>
-                        <input type="text" class="form-control" name='title' id="title" placeholder="Masukkan judul modul.." value="{{ old('title', $document->title) }}">
-                    </div>
-                    <div class="mb-3">
-                        @if ($document->modul)
-                        <input type="hidden" name="oldImage" value="{{ $document->modul }}">
-                       <a href="http://127.0.0.1:8000/storage/{{ $document->modul }}"><i class="bi bi-file-earmark-font-fill"></i>{{ $document->modul }}</a><br>
-                        @endif
-                        <label for="modul" class="form-label mt-3">File Modul</label>
-                        <input type="file" name="modul" id="modul" class="form-control">
-                    </div>
-                    
-                </div>
-                
+		<form action='{{ url("/dashboard-menu/edit/{$menu->slug}") }}' method="POST" enctype="multipart/form-data">
+			@csrf
+			@method('PUT')
+					<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div class="mb-3">
+						<label for="title" class="form-label">Nama Makanan111</label>
+						<input type="text" class="form-control" name='title' id="title" value="{{ $menu->title }}" placeholder="Masukkan nama makanan..">
+					</div>
+					<div class="mb-3">
+						<label for="slug" class="form-label">Slug</label>
+						<input type="text" class="form-control" name='slug' id="slug" value="{{ $menu->slug }}" placeholder="Slug akan digenerate..">
+					</div>
+					<div class="mb-3">
+						<label for="category_id" class="form-label">Kategori</label>
+						<select class="form-select" name='category_id' id="category_id">
+							<option value="{{ $menu->category->name }}" disabled>Pilih Kategori</option>
+							<option value="1">Makanan</option>
+							<option value="2">Minuman</option>
+							<option value="3">Cemilan</option>
+							<!-- Add more options as needed -->
+						</select>
+					  </div>
+					<div class="mb-3">
+					  <label for="img" class="form-label">Gambar Makanan</label><br/>
+    					<img src="{{asset("storage/".$menu->img)}}" alt="{{ $menu->title }}"class="img-fluid mb-3" style="max-height: 200px;" >
+					  <input type="file" name="img" value="{{ $menu->img }}" id="img" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="desc" class="form-label">Deskripsi</label>
+						<input id="desc" type="hidden" value="{{ $menu->desc }}" name="desc">
+              			<trix-editor input="desc"></trix-editor>
+					</div>
+				</div>
+				
 
-            </div>
-            <div class="modal-footer">
-    
-                <button type="submit" class="btn btn-success" name="submit">Edit</button>
-            </div>
-        </form>
-			
-		{{-- Menampilkan total pemasukan --}}
-		<div class="d-flex align-items-end flex-column p-2 mb-2">
-			{{-- <p class="h4 p-3 rounded fw-bolder">Total Pemasukan : Rp. {{ $totalPemasukan }}</p> --}}
-		</div>
-		{{-- Paginator --}}
-		{{-- {{ $data->withQueryString()->links() }} --}}
+			</div>
+			<div class="modal-footer">
+			  <a href="/dashboard-menu" class="btn btn-secondary">Kembali</a>
+			  <button type="submit" class="btn btn-success" name="submit">Simpan</button>
+			</div>
+		</form>
   </div>
 </div>
-
 </section>
+<script>
+	document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault();
+      })
+    const tipes = document.querySelector('#title');
+    const slugu = document.querySelector('#slug');
+
+    tipes.addEventListener('change', function(){
+        fetch('/dashboard-menu/create/checkSlug?title='+ tipes.value,{
+          headers : {
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => slugu.value = data.slug) 
+		.then(data => {
+            console.log(data)
+          })
+      });
+  </script>
 @endsection
+
+
 {{-- Import modal form tambah data --}}
 @push('modal')
-@include('modul.modal.create')
-{{-- @include('modul.modal.edit') --}}
-{{-- @include('pemasukan.modal.edit') --}}
+@include('admin.menu.modal.create')
 @endpush
 
 {{-- @push('js')
