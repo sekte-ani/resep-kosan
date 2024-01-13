@@ -72,6 +72,7 @@ class MenuController extends Controller
         $validatedData = $request->validate([
             'rating' => 'required',
             'review' => 'required|max:255',
+            'user_id' => 'required|user:id',
         ]);
 
         Rate::create($validatedData);
