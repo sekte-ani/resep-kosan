@@ -79,12 +79,12 @@
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="reviewer">
-
+                                    Reviewer
                                 </label>
 
                                 <input
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="reviewer" name="reviewer" type="text" disabled value=" {{ auth()->user()->name }}">
+                                    id="reviewer" name="reviewer" type="text" disabled value="{{ Auth::user()->name }}">
                             </div>
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
@@ -99,11 +99,11 @@
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="comment">
-                                    Comment:
+                                    Review:
                                 </label>
                                 <textarea
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="comment" name="comment" rows="4" required></textarea>
+                                    id="review" name="review" rows="4" required></textarea>
                             </div>
 
                             <div class="flex items-center justify-end">
@@ -118,3 +118,4 @@
             </div>
         @endauth
     @endsection
+    {{-- ========== MODAL =============== --}}

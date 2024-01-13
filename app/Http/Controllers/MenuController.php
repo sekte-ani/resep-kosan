@@ -74,6 +74,8 @@ class MenuController extends Controller
             'review' => 'required|max:255',
         ]);
 
+        
+
         Rate::create($validatedData);
         return redirect('/');
     }
