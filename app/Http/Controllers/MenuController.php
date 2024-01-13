@@ -19,7 +19,7 @@ class MenuController extends Controller
 
     public function makanan()
     {
-        $makanan = Menu::with('category')->where('category_id', '=', '1')->paginate(6);
+        $makanan = Menu::with('category')->where('category_id', '=', '1')->latest()->paginate(6);
         $menu = Menu::latest();
 
         if (request('search')) {
@@ -33,7 +33,7 @@ class MenuController extends Controller
 
     public function minuman()
     {
-        $minuman = Menu::with('category')->where('category_id', '=', '2')->paginate(6);
+        $minuman = Menu::with('category')->where('category_id', '=', '2')->latest()->paginate(6);
         $menu = Menu::latest();
 
         if (request('search')) {
@@ -47,7 +47,7 @@ class MenuController extends Controller
 
     public function cemilan()
     {
-        $cemilan = Menu::with('category')->where('category_id', '=', '3')->paginate(6);
+        $cemilan = Menu::with('category')->where('category_id', '=', '3')->latest()->paginate(6);
         $menu = Menu::latest();
 
         if (request('search')) {
@@ -62,7 +62,10 @@ class MenuController extends Controller
     public function show($title)
     {
         $menu = Menu::where('slug', $title)->first();
-        $rate = Rate::with(['user', 'menu'])->take(3)->get();
+
+        
+
+        $rate = Rate::where('menu_id', $menu->id)->with(['user', 'menu'])->latest()->take(3)->get();
         return view('makanan.detail', [
             'menus' => $menu,
             'rates' => $rate
@@ -89,14 +92,15 @@ class MenuController extends Controller
     public function showMore($title)
     {
         $menu = Menu::where('slug', $title)->first();
-        $rate = Rate::with(['user', 'menu'])->paginate(4);
+        $rate = Rate::where('menu_id', $menu->id)->with(['user', 'menu'])->latest()->paginate(4);
         // return view('rating.index', [
         //     'menus' => $menu,
         //     'rates' => $rate
         // ]);
         return view('makanan.rating', [
             'menus' => $menu,
-            'rates' => $rate
+            'rates' => $rate,
+            'coba' => $title
         ]);
     }
 
@@ -106,9 +110,7 @@ class MenuController extends Controller
         return view('rating.detail', [
             'rates' => $rate
         ]);
-        return view('rating.detail', [
-            'rates' => $rate
-        ]);
+
     }
 
     public function search()

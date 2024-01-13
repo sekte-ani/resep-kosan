@@ -25,6 +25,24 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::group(['middleware' => 'user.login'], function () {
     Route::post('/logout',  [AuthController::class, 'logout']);
+    
+    Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
+});
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+
+    Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
+    Route::get('/dashboard-menu/create', [DashboardController::class, 'create'])->name('listmenu.create');
+    Route::get('/dashboard-menu/detail/{menu:slug}', [DashboardController::class, 'show'])->name('listmenu.show');
+    Route::put('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'update'])->name('listmenu.update');
+    Route::get('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'showDetail'])->name('listmenu.update');
+    Route::delete('/dashboard-menu/delete/{menu:slug}', [DashboardController::class, 'destroy'])->name('listmenu.destroy');
+    Route::post('/dashboard-menu/create', [DashboardController::class, 'store'])->name('listmenu');
+
+    Route::get('/dashboard-menu/create/checkSlug', [DashboardController::class, 'checkSlug'])->name('checkSlug');
+
+    Route::post('/logout-admin',  [UserController::class, 'logout']);
 });
 
 Route::get('/login', [AuthController::class, 'index'])->middleware('guest')->name('login');;
@@ -43,30 +61,21 @@ Route::post('/minuman/{title}', [MenuController::class, 'rate'])->name('minuman.
 
 Route::get('/cemilan', [MenuController::class, 'cemilan'])->name('cemilan.index');
 Route::get('/cemilan/{title}', [MenuController::class, 'show'])->name('cemilan.detail');
-Route::post('/cemilan/{title}', [MenuController::class, 'rate'])->name('cemilan.rate');
 
-Route::get('/{title}/rating', [MenuController::class, 'showMore'])->name('rating.index');
+
 Route::get('/rating/{id}', [MenuController::class, 'rateDetail'])->name('rating.detail');
 
-Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
+
+Route::get('/{title}/rating', [MenuController::class, 'showMore'])->name('rating.index');
+// Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
 
 Route::get('/search', [MenuController::class, 'search']);
 
-Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard-menu', [DashboardController::class, 'getAllMenu'])->name('listmenu');
-Route::get('/dashboard-menu/create', [DashboardController::class, 'create'])->name('listmenu.create');
-Route::get('/dashboard-menu/detail/{menu:slug}', [DashboardController::class, 'show'])->name('listmenu.show');
-Route::put('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'update'])->name('listmenu.update');
-Route::get('/dashboard-menu/edit/{menu:slug}', [DashboardController::class, 'showDetail'])->name('listmenu.update');
-Route::delete('/dashboard-menu/delete/{menu:slug}', [DashboardController::class, 'destroy'])->name('listmenu.destroy');
-Route::post('/dashboard-menu/create', [DashboardController::class, 'store'])->name('listmenu');
-
-Route::get('/dashboard-menu/create/checkSlug', [DashboardController::class, 'checkSlug'])->name('checkSlug');
 
 Route::get('/dashboard-login', function () {
     return view('admin.auth.login');
-});
+})->name('dashboard-login');
 
 // Route::get('/dashboard-menu', function () {
 //     return view('admin.menu.index');
