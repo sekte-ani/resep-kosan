@@ -9,7 +9,12 @@
         @foreach ($menus as $item)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-2 relative overflow-hidden h-[350px]">
                 <a href="#" class="relative">
-                    <img src="{{ asset('images/food1.jpg') }}" alt="Logo Perusahaan" class="w-full h-full">
+                    @if ($item->img == 'kosong.png')
+                        <img src="{{ asset('images/food1.jpg') }}" alt="makanan" class="w-full h-full">
+                        
+                    @else
+                        <img src="{{ asset('storage/'. $item->img) }}" alt="makanan" class="w-full h-full">
+                    @endif
                     <div class="absolute inset-0 bg-black opacity-20"></div>
                 </a>
                 <div class="p-5 absolute bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-yellow-200">
