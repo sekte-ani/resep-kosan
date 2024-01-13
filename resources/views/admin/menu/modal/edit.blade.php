@@ -20,7 +20,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="slug" class="form-label">Slug</label>
-						<input type="text" class="form-control" name='slug' id="slug" value="{{ $menu->slug }}" placeholder="Slug akan digenerate..">
+						<input type="text" readonly class="form-control bg-light" name='slug' id="slug" value="{{ $menu->slug }}" placeholder="Slug akan digenerate..">
 					</div>
 					<div class="mb-3">
 						<label for="category_id" class="form-label">Kategori</label>
