@@ -98,7 +98,7 @@ class MenuController extends Controller
             'rates' => $rate
         ]);
     }
-    
+
     public function rateDetail($id)
     {
         $rate = Rate::with(['user', 'menu'])->findOrFail($id);
@@ -109,6 +109,7 @@ class MenuController extends Controller
             'rates' => $rate
         ]);
     }
+
     public function search()
     {
         $menu = Menu::latest();
