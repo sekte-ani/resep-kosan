@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class MenuController extends Controller
 {
+
     public function dashboard()
     {
         return view('dashboard.index');
@@ -106,6 +107,19 @@ class MenuController extends Controller
         ]);
         return view('rating.detail', [
             'rates' => $rate
+        ]);
+    }
+
+    public function search()
+    {
+        $menu = Menu::latest();
+
+        if (request('search')) {
+            $menu->where('title', 'like', '%' . request('search') . '%');
+        }
+
+        return view('dashboard.search', [
+            'menus' => $menu->get(),
         ]);
     }
 }

@@ -50,6 +50,7 @@ Route::get('/rating/{id}', [MenuController::class, 'rateDetail'])->name('rating.
 
 Route::get('/rating/{title}', [MenuController::class, 'showMore'])->name('rating.index');
 
+Route::get('/search', [MenuController::class, 'search']);
 
 Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
 
