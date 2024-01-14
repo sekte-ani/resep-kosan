@@ -26,9 +26,13 @@
 						<label for="category_id" class="form-label">Kategori</label>
 						<select class="form-select" name='category_id' id="category_id">
 							<option value="{{ $menu->category->name }}" disabled>Pilih Kategori</option>
-							<option value="1">Makanan</option>
-							<option value="2">Minuman</option>
-							<option value="3">Cemilan</option>
+							@foreach ($cat as $category)
+                            @if (old('category_id', $menu->category_id) == $category->id)
+                              <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                            @else
+                             <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endif
+                            @endforeach
 							<!-- Add more options as needed -->
 						</select>
 					  </div>

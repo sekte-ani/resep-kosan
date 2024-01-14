@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Rate;
 use Illuminate\Http\Request;
@@ -42,6 +43,7 @@ class DashboardController extends Controller
         
         return view('admin.menu.modal.edit', [
             'menu' => $menu,
+            'cat' => Category::all()
         ]);
     }
 
